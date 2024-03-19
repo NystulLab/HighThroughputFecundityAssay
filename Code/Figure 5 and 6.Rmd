@@ -64,3 +64,30 @@ ggsave("../Results/Quantifly.pdf")
 ```{r}
 summary(lm(Quantifly ~ Manual, data = img_count))
 ```
+
+```{r}
+#calculate the error of each model
+img_count_error <- data.frame(
+  Versatile_fluo = img_count$Versatile_fluo - img_count$Manual,
+  flyModel2 = img_count$flyModel2 - img_count$Manual,
+  Quantifly = img_count$Quantifly - img_count$Manual
+)
+
+img_count_error <- img_count_error %>% rownames_to_column()
+img_count_error <- img_count_error %>% pivot_longer(!rowname, names_to = "Model", values_to = "Values")
+```
+
+```{r}
+img_count_error$Model <- factor(img_count_error$Model, levels = c("Versatile_fluo", "flyModel2", "Quantifly"))
+ggplot(data = img_count_error, aes(x = Model, y = Values, fill = Model)) +
+  geom_violin() +
+  geom_jitter(width = 0.1, size = 0.2) +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
+  theme(legend.position = "None") +
+  xlab("") +
+  ylab("Difference betwen model and ground truth")
+
+ggsave("../Results/ModelErrors.pdf")
+```
+
