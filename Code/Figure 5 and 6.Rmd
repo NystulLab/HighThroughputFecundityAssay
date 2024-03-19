@@ -13,13 +13,17 @@ img_count <- read.csv("../Data/ImagePipeline.csv")
 ```
 
 ```{r}
-#versitle flow model
+#versatile flow model
 ggplot(data = img_count, aes(x = Manual, y = Versatile_fluo)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE) +
   theme_prism(base_size = 10) +
   xlab("Manual counts") +
-  ylab("Model counts")
+  ylab("Model counts") +
+  scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20)))
+
+ggsave("../Results/versatile_fluo.pdf")
 ```
 ```{r}
 summary(lm(Versatile_fluo ~ Manual, data = img_count))
@@ -32,7 +36,11 @@ ggplot(data = img_count, aes(x = Manual, y = flyModel2)) +
   geom_smooth(method = 'lm', se = FALSE) +
   theme_prism(base_size = 10) +
   xlab("Manual counts") +
-  ylab("Model counts")
+  ylab("Model counts") +
+  scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20)))
+
+ggsave("../Results/flyModel2.pdf")
 ```
 
 ```{r}
@@ -46,7 +54,11 @@ ggplot(data = img_count, aes(x = Manual, y = Quantifly)) +
   geom_smooth(method = 'lm', se = FALSE) +
   theme_prism(base_size = 10) +
   xlab("Manual counts") +
-  ylab("Model counts")
+  ylab("Model counts") +
+  scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  scale_y_continuous(limits = c(0,120), breaks = c(seq(0,120, by=20)))
+
+ggsave("../Results/Quantifly.pdf")
 ```
 
 ```{r}
