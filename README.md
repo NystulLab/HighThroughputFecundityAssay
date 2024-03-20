@@ -1,7 +1,16 @@
-# fly_egg_counting
+# High Throughput Drosophila Fecundity Assay
 
-## A python script to segment and count fly eggs in RoboCam images
+## Raw data and figures
+### Contents
+'Data' : The raw data from the egg counts <br>
+'Code' : R Notebooks used to generate figures from the raw data. <br>
+'Results' : Output from R Notebooks <br>
 
+## RoboCam
+### Contents
+'RoboCam" : Python scripts used to operate the RoboCam
+
+## Image segmentation to identify eggs
 ### Contents
 `fly_egg_counting` : A folder containing some test images and the flyModel2 model files <br>
 `egg_counting_with_flyModel2.ipynb` : Google colab notebook that contains the image analysis pipeline <br>
