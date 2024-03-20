@@ -21,7 +21,11 @@ ggplot(data = img_count, aes(x = Manual, y = Versatile_fluo)) +
   xlab("Manual counts") +
   ylab("Model counts") +
   scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
-  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20)))
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) + 
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
 
 ggsave("../Results/versatile_fluo.pdf")
 ```
