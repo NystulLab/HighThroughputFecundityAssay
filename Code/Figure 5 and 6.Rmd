@@ -21,7 +21,11 @@ ggplot(data = img_count, aes(x = Manual, y = Versatile_fluo)) +
   xlab("Manual counts") +
   ylab("Model counts") +
   scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
-  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20)))
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) + 
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
 
 ggsave("../Results/versatile_fluo.pdf")
 ```
@@ -34,11 +38,15 @@ summary(lm(Versatile_fluo ~ Manual, data = img_count))
 ggplot(data = img_count, aes(x = Manual, y = flyModel2)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE) +
-  theme_prism(base_size = 10) +
+  #theme_prism(base_size = 10) +
   xlab("Manual counts") +
   ylab("Model counts") +
   scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
-  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20)))
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
 
 ggsave("../Results/flyModel2.pdf")
 ```
@@ -56,7 +64,11 @@ ggplot(data = img_count, aes(x = Manual, y = Quantifly)) +
   xlab("Manual counts") +
   ylab("Model counts") +
   scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
-  scale_y_continuous(limits = c(0,120), breaks = c(seq(0,120, by=20)))
+  scale_y_continuous(limits = c(0,120), breaks = c(seq(0,120, by=20))) +
+   theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
 
 ggsave("../Results/Quantifly.pdf")
 ```
