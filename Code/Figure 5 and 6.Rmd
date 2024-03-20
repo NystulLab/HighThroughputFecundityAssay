@@ -38,7 +38,7 @@ summary(lm(Versatile_fluo ~ Manual, data = img_count))
 ggplot(data = img_count, aes(x = Manual, y = flyModel2)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE) +
-  #theme_prism(base_size = 10) +
+  theme_prism(base_size = 10) +
   xlab("Manual counts") +
   ylab("Model counts") +
   scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
@@ -94,11 +94,16 @@ img_count_error$Model <- factor(img_count_error$Model, levels = c("Versatile_flu
 ggplot(data = img_count_error, aes(x = Model, y = Values, fill = Model)) +
   geom_violin() +
   geom_jitter(width = 0.1, size = 0.2) +
-  theme_prism(base_size = 10) +
+  #theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
   theme(legend.position = "None") +
   xlab("") +
-  ylab("Difference betwen model and ground truth")
+  ylab("Difference betwen model and ground truth") +
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24),
+   #axis.text.x = element_text(angle = 45, vjust = 1.0, hjust=1)
+  )
 
 ggsave("../Results/ModelErrors.pdf")
 ```
