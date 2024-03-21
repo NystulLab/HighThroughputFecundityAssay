@@ -1755,9 +1755,23 @@ analyzing their egg lay number</h1>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHN0cmluZ3IpXG5saWJyYXJ5KGdncHVicilcbmxpYnJhcnkoZ2diZWVzd2FybSlcbmxpYnJhcnkoZ2dwcmlzbSlcbmBgYCJ9 -->
-<pre class="r"><code>library(tidyverse)
-library(stringr)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4yIOKUgOKUgOKclCBnZ3Bsb3QyIDMuNC4wICAgICDinJQgcHVycnIgICAxLjAuMVxu4pyUIHRpYmJsZSAgMy4xLjggICAgIOKclCBkcGx5ciAgIDEuMS4wXG7inJQgdGlkeXIgICAxLjMuMCAgICAg4pyUIHN0cmluZ3IgMS41LjBcbuKclCByZWFkciAgIDIuMS4zICAgICDinJQgZm9yY2F0cyAxLjAuMOKUgOKUgCBDb25mbGljdHMg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAIHRpZHl2ZXJzZV9jb25mbGljdHMoKSDilIDilIBcbuKcliBkcGx5cjo6ZmlsdGVyKCkgbWFza3Mgc3RhdHM6OmZpbHRlcigpXG7inJYgZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ───────────────────────────────────────────────────────────────────────── tidyverse 1.3.2 ──✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0── Conflicts ──────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdHJpbmdyKVxubGlicmFyeShnZ3B1YnIpXG5saWJyYXJ5KGdnYmVlc3dhcm0pXG5saWJyYXJ5KGdncHJpc20pXG5gYGAifQ== -->
+<pre class="r"><code>library(stringr)
 library(ggpubr)
 library(ggbeeswarm)
 library(ggprism)</code></pre>
@@ -1785,12 +1799,6 @@ FoodTypes3$Repeat = 3
 FoodTypes4$Repeat = 4
 FoodTypes = rbind(FoodTypes1, FoodTypes2, FoodTypes3, FoodTypes4)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
-<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
-  invalid first argument
-Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
-  attempt to use zero-length variable name</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1841,8 +1849,60 @@ ggsave(&quot;../Results/Figure1.pdf&quot;)</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRm9vZFR5cGVzICU+JSBmaWx0ZXIoKERheSA9PSBcIkQxXCIgfCBEYXkgPT0gXCJEM1wiKSAmIENvbmRpdGlvbiA9PSBcIk1vbGFzc2VzXCIpICU+JSB0LnRlc3QoVmFsdWUgfiBEYXksIGRhdGEgPSAuKVxuYGBgIn0= -->
+<pre class="r"><code>FoodTypes %&gt;% filter((Day == &quot;D1&quot; | Day == &quot;D3&quot;) &amp; Condition == &quot;Molasses&quot;) %&gt;% t.test(Value ~ Day, data = .)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5cdFdlbGNoIFR3byBTYW1wbGUgdC10ZXN0XG5cbmRhdGE6ICBWYWx1ZSBieSBEYXlcbnQgPSA2LjcwNTMsIGRmID0gODUuNDE0LCBwLXZhbHVlID0gMi4wNTdlLTA5XG5hbHRlcm5hdGl2ZSBoeXBvdGhlc2lzOiB0cnVlIGRpZmZlcmVuY2UgaW4gbWVhbnMgYmV0d2VlbiBncm91cCBEMSBhbmQgZ3JvdXAgRDMgaXMgbm90IGVxdWFsIHRvIDBcbjk1IHBlcmNlbnQgY29uZmlkZW5jZSBpbnRlcnZhbDpcbiAyMy43OTA3OCA0My44NDQ3NFxuc2FtcGxlIGVzdGltYXRlczpcbm1lYW4gaW4gZ3JvdXAgRDEgbWVhbiBpbiBncm91cCBEMyBcbiAgICAgICAgNDUuODgzMzMgICAgICAgICAxMi4wNjU1NyBcbiJ9 -->
+<pre><code>
+    Welch Two Sample t-test
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRmVlZGluZyBmbGllcyBkaWZmZXJlbnQgZm9vZCB0eXBlcyBhbmQgYW5hbHl6aW5nIHRoZWlyIGVnZyBsYXkgbnVtYmVyIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoc3RyaW5ncikKbGlicmFyeShnZ3B1YnIpCmxpYnJhcnkoZ2diZWVzd2FybSkKbGlicmFyeShnZ3ByaXNtKQpgYGAKCmBgYHtyfQojTG9hZCBkYXRhIGZyb20gZm91ciByZXBsaWNhdGVzCgpGb29kVHlwZXMxIDwtIHJlYWQuY3N2KCIuLi9EYXRhL0Zvb2RUeXBlc18yMDIyMTIxMV8xMjE0LmNzdiIpCkZvb2RUeXBlczIgPC0gcmVhZC5jc3YoIi4uL0RhdGEvRm9vZFR5cGVzXzIwMjIxMjIwXzEyMjIuY3N2IikKRm9vZFR5cGVzMyA8LSByZWFkLmNzdigiLi4vRGF0YS9Gb29kVHlwZXNfMjAyMzAxMjVfMDEyNy5jc3YiKQpGb29kVHlwZXM0IDwtIHJlYWQuY3N2KCIuLi9EYXRhL0Zvb2RUeXBlc18yMDIzMDIwOF8wMjEwLmNzdiIpCmBgYAoKYGBge3J9CkZvb2RUeXBlczEkUmVwZWF0ID0gMQpGb29kVHlwZXMyJFJlcGVhdCA9IDIKRm9vZFR5cGVzMyRSZXBlYXQgPSAzCkZvb2RUeXBlczQkUmVwZWF0ID0gNApGb29kVHlwZXMgPSByYmluZChGb29kVHlwZXMxLCBGb29kVHlwZXMyLCBGb29kVHlwZXMzLCBGb29kVHlwZXM0KQpgYGAKCgpgYGB7cn0KRm9vZFR5cGVzLmF2ZXJhZ2UgPC0gRm9vZFR5cGVzICU+JSBncm91cF9ieSAoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgcm93KSAlPiUgIHN1bW1hcmlzZShFZ2dzID0gbWVhbihWYWx1ZSkpCmBgYAoKYGBge3J9CkZvb2RUeXBlcy5hdmVyYWdlIDwtIEZvb2RUeXBlcy5hdmVyYWdlICU+JSBmaWx0ZXIoRGF5ID09ICJEMSIgfCBEYXkgPT0gIkQzIikKYGBgCgoKYGBge3J9CmxldmVsX29yZGVyIDwtIGMoJ01vbGFzc2VzJywgJ0JEU0MnLCAnR3JhcGUgSnVpY2UnKQoKRm9vZFR5cGVzLmF2ZXJhZ2UkQ29uZGl0aW9uIDwtIHN0cl90cmltKEZvb2RUeXBlcy5hdmVyYWdlJENvbmRpdGlvbikKRm9vZFR5cGVzLmF2ZXJhZ2UkQ29uZGl0aW9uIDwtIGZhY3RvcihGb29kVHlwZXMuYXZlcmFnZSRDb25kaXRpb24sIGxldmVscyA9IGxldmVsX29yZGVyKQoKZ2dwbG90KGRhdGEgPSBGb29kVHlwZXMuYXZlcmFnZSwgYWVzKHggPSBDb25kaXRpb24sIHkgPSBFZ2dzLCBmaWxsID0gRGF5KSkgKyAKZ2VvbV9ib3hwbG90KCkgKwpnZW9tX3BvaW50KHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2Uod2lkdGggPSAwLjc1KSkgKwp0aGVtZV9wcmlzbShiYXNlX3NpemUgPSAxMCkgKwpzY2FsZV9maWxsX2JyZXdlcihwYWxldHRlID0gIkJsdWVzIikgKwogIHhsYWIoIkZvb2QgQ29uZGl0aW9ucyIpICsKICB5bGFiKCJBdmVyYWdlIEFtb3VudCBvZiBFZ2dzIExhaWQiKSArCiAgdGhlbWUgKAogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMCksCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMCksCiAgKQoKZ2dzYXZlKCIuLi9SZXN1bHRzL0ZpZ3VyZTEucGRmIikKYGBgCgo=</div>
+data:  Value by Day
+t = 6.7053, df = 85.414, p-value = 2.057e-09
+alternative hypothesis: true difference in means between group D1 and group D3 is not equal to 0
+95 percent confidence interval:
+ 23.79078 43.84474
+sample estimates:
+mean in group D1 mean in group D3 
+        45.88333         12.06557 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRm9vZFR5cGVzICU+JSBmaWx0ZXIoKERheSA9PSBcIkQxXCIgfCBEYXkgPT0gXCJEM1wiKSAmIENvbmRpdGlvbiA9PSBcIkdyYXBlIEp1aWNlXCIpICU+JSB0LnRlc3QoVmFsdWUgfiBEYXksIGRhdGEgPSAuKVxuYGBgIn0= -->
+<pre class="r"><code>FoodTypes %&gt;% filter((Day == &quot;D1&quot; | Day == &quot;D3&quot;) &amp; Condition == &quot;Grape Juice&quot;) %&gt;% t.test(Value ~ Day, data = .)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5cdFdlbGNoIFR3byBTYW1wbGUgdC10ZXN0XG5cbmRhdGE6ICBWYWx1ZSBieSBEYXlcbnQgPSA3LjcxNzgsIGRmID0gNzYuNzA4LCBwLXZhbHVlID0gMy42MjNlLTExXG5hbHRlcm5hdGl2ZSBoeXBvdGhlc2lzOiB0cnVlIGRpZmZlcmVuY2UgaW4gbWVhbnMgYmV0d2VlbiBncm91cCBEMSBhbmQgZ3JvdXAgRDMgaXMgbm90IGVxdWFsIHRvIDBcbjk1IHBlcmNlbnQgY29uZmlkZW5jZSBpbnRlcnZhbDpcbiAyOC40NjI3MSA0OC4yNTg2MFxuc2FtcGxlIGVzdGltYXRlczpcbm1lYW4gaW4gZ3JvdXAgRDEgbWVhbiBpbiBncm91cCBEMyBcbiAgICAgICAgNDguNzM3NzAgICAgICAgICAxMC4zNzcwNSBcbiJ9 -->
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Value by Day
+t = 7.7178, df = 76.708, p-value = 3.623e-11
+alternative hypothesis: true difference in means between group D1 and group D3 is not equal to 0
+95 percent confidence interval:
+ 28.46271 48.25860
+sample estimates:
+mean in group D1 mean in group D3 
+        48.73770         10.37705 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRm9vZFR5cGVzICU+JSBmaWx0ZXIoKERheSA9PSBcIkQxXCIgfCBEYXkgPT0gXCJEM1wiKSAmIENvbmRpdGlvbiA9PSBcIkJEU0NcIikgJT4lIHQudGVzdChWYWx1ZSB+IERheSwgZGF0YSA9IC4pXG5gYGAifQ== -->
+<pre class="r"><code>FoodTypes %&gt;% filter((Day == &quot;D1&quot; | Day == &quot;D3&quot;) &amp; Condition == &quot;BDSC&quot;) %&gt;% t.test(Value ~ Day, data = .)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5cdFdlbGNoIFR3byBTYW1wbGUgdC10ZXN0XG5cbmRhdGE6ICBWYWx1ZSBieSBEYXlcbnQgPSA1Ljk5OTIsIGRmID0gNjYuOTA2LCBwLXZhbHVlID0gOC45MzZlLTA4XG5hbHRlcm5hdGl2ZSBoeXBvdGhlc2lzOiB0cnVlIGRpZmZlcmVuY2UgaW4gbWVhbnMgYmV0d2VlbiBncm91cCBEMSBhbmQgZ3JvdXAgRDMgaXMgbm90IGVxdWFsIHRvIDBcbjk1IHBlcmNlbnQgY29uZmlkZW5jZSBpbnRlcnZhbDpcbiAyMC45NTkwOSA0MS44NjA1OFxuc2FtcGxlIGVzdGltYXRlczpcbm1lYW4gaW4gZ3JvdXAgRDEgbWVhbiBpbiBncm91cCBEMyBcbiAgICAgICAgNDMuMDAwMDAgICAgICAgICAxMS41OTAxNiBcbiJ9 -->
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Value by Day
+t = 5.9992, df = 66.906, p-value = 8.936e-08
+alternative hypothesis: true difference in means between group D1 and group D3 is not equal to 0
+95 percent confidence interval:
+ 20.95909 41.86058
+sample estimates:
+mean in group D1 mean in group D3 
+        43.00000         11.59016 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRmVlZGluZyBmbGllcyBkaWZmZXJlbnQgZm9vZCB0eXBlcyBhbmQgYW5hbHl6aW5nIHRoZWlyIGVnZyBsYXkgbnVtYmVyIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoc3RyaW5ncikKbGlicmFyeShnZ3B1YnIpCmxpYnJhcnkoZ2diZWVzd2FybSkKbGlicmFyeShnZ3ByaXNtKQpgYGAKCmBgYHtyfQojTG9hZCBkYXRhIGZyb20gZm91ciByZXBsaWNhdGVzCgpGb29kVHlwZXMxIDwtIHJlYWQuY3N2KCIuLi9EYXRhL0Zvb2RUeXBlc18yMDIyMTIxMV8xMjE0LmNzdiIpCkZvb2RUeXBlczIgPC0gcmVhZC5jc3YoIi4uL0RhdGEvRm9vZFR5cGVzXzIwMjIxMjIwXzEyMjIuY3N2IikKRm9vZFR5cGVzMyA8LSByZWFkLmNzdigiLi4vRGF0YS9Gb29kVHlwZXNfMjAyMzAxMjVfMDEyNy5jc3YiKQpGb29kVHlwZXM0IDwtIHJlYWQuY3N2KCIuLi9EYXRhL0Zvb2RUeXBlc18yMDIzMDIwOF8wMjEwLmNzdiIpCmBgYAoKYGBge3J9CkZvb2RUeXBlczEkUmVwZWF0ID0gMQpGb29kVHlwZXMyJFJlcGVhdCA9IDIKRm9vZFR5cGVzMyRSZXBlYXQgPSAzCkZvb2RUeXBlczQkUmVwZWF0ID0gNApGb29kVHlwZXMgPSByYmluZChGb29kVHlwZXMxLCBGb29kVHlwZXMyLCBGb29kVHlwZXMzLCBGb29kVHlwZXM0KQpgYGAKCgpgYGB7cn0KRm9vZFR5cGVzLmF2ZXJhZ2UgPC0gRm9vZFR5cGVzICU+JSBncm91cF9ieSAoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgcm93KSAlPiUgIHN1bW1hcmlzZShFZ2dzID0gbWVhbihWYWx1ZSkpCmBgYAoKYGBge3J9CkZvb2RUeXBlcy5hdmVyYWdlIDwtIEZvb2RUeXBlcy5hdmVyYWdlICU+JSBmaWx0ZXIoRGF5ID09ICJEMSIgfCBEYXkgPT0gIkQzIikKYGBgCgoKYGBge3J9CmxldmVsX29yZGVyIDwtIGMoJ01vbGFzc2VzJywgJ0JEU0MnLCAnR3JhcGUgSnVpY2UnKQoKRm9vZFR5cGVzLmF2ZXJhZ2UkQ29uZGl0aW9uIDwtIHN0cl90cmltKEZvb2RUeXBlcy5hdmVyYWdlJENvbmRpdGlvbikKRm9vZFR5cGVzLmF2ZXJhZ2UkQ29uZGl0aW9uIDwtIGZhY3RvcihGb29kVHlwZXMuYXZlcmFnZSRDb25kaXRpb24sIGxldmVscyA9IGxldmVsX29yZGVyKQoKZ2dwbG90KGRhdGEgPSBGb29kVHlwZXMuYXZlcmFnZSwgYWVzKHggPSBDb25kaXRpb24sIHkgPSBFZ2dzLCBmaWxsID0gRGF5KSkgKyAKZ2VvbV9ib3hwbG90KCkgKwpnZW9tX3BvaW50KHBvc2l0aW9uID0gcG9zaXRpb25fZG9kZ2Uod2lkdGggPSAwLjc1KSkgKwp0aGVtZV9wcmlzbShiYXNlX3NpemUgPSAxMCkgKwpzY2FsZV9maWxsX2JyZXdlcihwYWxldHRlID0gIkJsdWVzIikgKwogIHhsYWIoIkZvb2QgQ29uZGl0aW9ucyIpICsKICB5bGFiKCJBdmVyYWdlIEFtb3VudCBvZiBFZ2dzIExhaWQiKSArCiAgdGhlbWUgKAogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMCksCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMCksCiAgKQoKZ2dzYXZlKCIuLi9SZXN1bHRzL0ZpZ3VyZTEucGRmIikKYGBgCgpgYGB7cn0KRm9vZFR5cGVzICU+JSBmaWx0ZXIoKERheSA9PSAiRDEiIHwgRGF5ID09ICJEMyIpICYgQ29uZGl0aW9uID09ICJNb2xhc3NlcyIpICU+JSB0LnRlc3QoVmFsdWUgfiBEYXksIGRhdGEgPSAuKQpGb29kVHlwZXMgJT4lIGZpbHRlcigoRGF5ID09ICJEMSIgfCBEYXkgPT0gIkQzIikgJiBDb25kaXRpb24gPT0gIkdyYXBlIEp1aWNlIikgJT4lIHQudGVzdChWYWx1ZSB+IERheSwgZGF0YSA9IC4pCkZvb2RUeXBlcyAlPiUgZmlsdGVyKChEYXkgPT0gIkQxIiB8IERheSA9PSAiRDMiKSAmIENvbmRpdGlvbiA9PSAiQkRTQyIpICU+JSB0LnRlc3QoVmFsdWUgfiBEYXksIGRhdGEgPSAuKQpgYGAKCg==</div>
 
 
 

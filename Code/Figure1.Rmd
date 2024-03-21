@@ -59,3 +59,9 @@ scale_fill_brewer(palette = "Blues") +
 ggsave("../Results/Figure1.pdf")
 ```
 
+```{r}
+FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "Molasses") %>% t.test(Value ~ Day, data = .)
+FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "Grape Juice") %>% t.test(Value ~ Day, data = .)
+FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "BDSC") %>% t.test(Value ~ Day, data = .)
+```
+
