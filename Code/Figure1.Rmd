@@ -1,0 +1,70 @@
+---
+title: "Feeding flies different food types and analyzing their egg lay number"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(ggpubr)
+library(ggbeeswarm)
+library(ggprism)
+```
+
+```{r}
+FoodTypes1 <- read.csv("../Data/FoodTypes_20221211_20221214.csv")
+```
+
+```{r}
+FoodTypes2 <- read.csv("../Data/FoodTypes_20221220_20221222.csv")
+```
+
+```{r}
+FoodTypes3 <- read.csv("../Data/FoodTypesEggLay20230125_20230127.csv")
+```
+
+```{r}
+FoodTypes4 <- read.csv("../Data/EggLay_FoodTypes_20230208_0210.csv")
+```
+
+```{r}
+FoodTypes1$Repeat = 1
+FoodTypes2$Repeat = 2
+FoodTypes3$Repeat = 3
+FoodTypes4$Repeat = 4
+FoodTypes = rbind(FoodTypes1, FoodTypes2, FoodTypes3, FoodTypes4)
+```
+
+
+```{r}
+FoodTypes.average <- FoodTypes %>% group_by (Condition, Repeat, Day, row) %>%  summarise(Eggs = mean(Value))
+```
+
+```{r}
+FoodTypes.average <- FoodTypes.average %>% filter(Day == "D1" | Day == "D3")
+```
+
+```{r}
+FoodTypes.average <- na.omit(FoodTypes.average)
+```
+
+```{r}
+level_order <- c('Molasses', 'BDSC', 'Grape Juice')
+
+FoodTypes.average$Condition <- factor(FoodTypes.average$Condition, levels = level_order)
+
+ggplot(data = FoodTypes.average, aes(x = Condition, y = Eggs, fill = Day)) + 
+geom_boxplot() +
+geom_point(position = position_dodge(width = 0.75)) +
+theme_prism(base_size = 10) +
+scale_fill_brewer(palette = "Blues") +
+  xlab("Food Conditions") +
+  ylab("Average Amount of Eggs Laid") +
+  theme (
+    axis.text = element_text(size = 20),
+    axis.title = element_text(size = 20),
+  )
+
+ggsave("../Results/Figure1.pdf")
+```
+
