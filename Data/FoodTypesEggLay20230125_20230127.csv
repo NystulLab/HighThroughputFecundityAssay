@@ -1,0 +1,145 @@
+Condition,Day,Wells,Value,row
+Molasses,D1,1,97,1
+Molasses,D1,2,41,1
+Molasses,D1,3,12,1
+Molasses,D1,4,33,1
+Molasses,D1,5,21,1
+Molasses,D1,6,29,1
+Molasses,D1,7,63,1
+Molasses,D1,8,45,1
+Molasses,D1,9,44,2
+Molasses,D1,10,37,2
+Molasses,D1,11,68,2
+Molasses,D1,12,95,2
+Molasses,D1,13,40,2
+Molasses,D1,14,56,2
+Molasses,D1,15,27,2
+Molasses,D1,16,16,2
+Molasses,D2,1,11,1
+Molasses,D2,2,5,1
+Molasses,D2,3,28,1
+Molasses,D2,4,11,1
+Molasses,D2,5,21,1
+Molasses,D2,6,16,1
+Molasses,D2,7,8,1
+Molasses,D2,8,16,1
+Molasses,D2,9,45,2
+Molasses,D2,10,24,2
+Molasses,D2,11,20,2
+Molasses,D2,12,14,2
+Molasses,D2,13,9,2
+Molasses,D2,14,8,2
+Molasses,D2,15,16,2
+Molasses,D2,16,37,2
+Molasses,D3,1,15,1
+Molasses,D3,2,9,1
+Molasses,D3,3,7,1
+Molasses,D3,4,0,1
+Molasses,D3,5,7,1
+Molasses,D3,6,15,1
+Molasses,D3,7,0,1
+Molasses,D3,8,4,1
+Molasses,D3,9,6,2
+Molasses,D3,10,6,2
+Molasses,D3,11,1,2
+Molasses,D3,12,0,2
+Molasses,D3,13,31,2
+Molasses,D3,14,20,2
+Molasses,D3,15,19,2
+Molasses,D3,16,0,2
+BDSC,D1,1,66,3
+BDSC,D1,2,62,3
+BDSC,D1,3,47,3
+BDSC,D1,4,93,3
+BDSC,D1,5,35,3
+BDSC,D1,6,72,3
+BDSC,D1,7,56,3
+BDSC,D1,8,14,3
+BDSC,D1,9,52,4
+BDSC,D1,10,73,4
+BDSC,D1,11,6,4
+BDSC,D1,12,43,4
+BDSC,D1,13,13,4
+BDSC,D1,14,9,4
+BDSC,D1,15,0,4
+BDSC,D1,16,11,4
+BDSC,D2,1,20,3
+BDSC,D2,2,21,3
+BDSC,D2,3,11,3
+BDSC,D2,4,8,3
+BDSC,D2,5,17,3
+BDSC,D2,6,0,3
+BDSC,D2,7,23,3
+BDSC,D2,8,14,3
+BDSC,D2,9,46,4
+BDSC,D2,10,18,4
+BDSC,D2,11,21,4
+BDSC,D2,12,31,4
+BDSC,D2,13,46,4
+BDSC,D2,14,28,4
+BDSC,D2,15,36,4
+BDSC,D2,16,59,4
+BDSC,D3,1,0,3
+BDSC,D3,2,2,3
+BDSC,D3,3,5,3
+BDSC,D3,4,14,3
+BDSC,D3,5,2,3
+BDSC,D3,6,35,3
+BDSC,D3,7,15,3
+BDSC,D3,8,1,3
+BDSC,D3,9,2,4
+BDSC,D3,10,11,4
+BDSC,D3,11,2,4
+BDSC,D3,12,5,4
+BDSC,D3,13,25,4
+BDSC,D3,14,0,4
+BDSC,D3,15,0,4
+BDSC,D3,16,8,4
+Grape Juice,D1,1,37,5
+Grape Juice,D1,2,100,5
+Grape Juice,D1,3,55,5
+Grape Juice,D1,4,94,5
+Grape Juice,D1,5,66,5
+Grape Juice,D1,6,46,5
+Grape Juice,D1,7,87,5
+Grape Juice,D1,8,5,5
+Grape Juice,D1,9,12,6
+Grape Juice,D1,10,52,6
+Grape Juice,D1,11,76,6
+Grape Juice,D1,12,15,6
+Grape Juice,D1,13,80,6
+Grape Juice,D1,14,32,6
+Grape Juice,D1,15,89,6
+Grape Juice,D1,16,14,6
+Grape Juice,D2,1,42,5
+Grape Juice,D2,2,22,5
+Grape Juice,D2,3,18,5
+Grape Juice,D2,4,27,5
+Grape Juice,D2,5,0,5
+Grape Juice,D2,6,30,5
+Grape Juice,D2,7,6,5
+Grape Juice,D2,8,16,5
+Grape Juice,D2,9,50,6
+Grape Juice,D2,10,20,6
+Grape Juice,D2,11,7,6
+Grape Juice,D2,12,28,6
+Grape Juice,D2,13,26,6
+Grape Juice,D2,14,25,6
+Grape Juice,D2,15,14,6
+Grape Juice,D2,16,12,6
+Grape Juice,D3,1,7,5
+Grape Juice,D3,2,12,5
+Grape Juice,D3,3,26,5
+Grape Juice,D3,4,9,5
+Grape Juice,D3,5,1,5
+Grape Juice,D3,6,5,5
+Grape Juice,D3,7,1,5
+Grape Juice,D3,8,8,5
+Grape Juice,D3,9,4,6
+Grape Juice,D3,10,10,6
+Grape Juice,D3,11,8,6
+Grape Juice,D3,12,2,6
+Grape Juice,D3,13,0,6
+Grape Juice,D3,14,2,6
+Grape Juice,D3,15,1,6
+Grape Juice,D3,16,0,6

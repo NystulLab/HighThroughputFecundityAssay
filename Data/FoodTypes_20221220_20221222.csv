@@ -1,0 +1,97 @@
+Condition,Day,Wells,Value,row
+Grape Juice,D1,1,63,5
+Grape Juice,D1,2,48,5
+Grape Juice,D1,3,90,5
+Grape Juice,D1,4,84,5
+Grape Juice,D1,5,61,5
+Grape Juice,D1,6,61,5
+Grape Juice,D1,7,60,5
+Grape Juice,D1,8,85,5
+Grape Juice,D1,9,37,6
+Grape Juice,D1,10,62,6
+Grape Juice,D1,11,49,6
+Grape Juice,D1,12,12,6
+Grape Juice,D1,13,0,6
+Grape Juice,D1,14,46,6
+Grape Juice,D1,15,0,6
+Grape Juice,D1,16,0,6
+Molasses,D1,1,77,1
+Molasses,D1,2,84,1
+Molasses,D1,3,59,1
+Molasses,D1,4,55,1
+Molasses,D1,5,72,1
+Molasses,D1,6,54,1
+Molasses,D1,7,75,1
+Molasses,D1,8,86,1
+Molasses,D1,9,13,2
+Molasses,D1,10,41,2
+Molasses,D1,11,98,2
+Molasses,D1,12,83,2
+Molasses,D1,13,0,2
+Molasses,D1,14,82,2
+Molasses,D1,15,0,2
+Molasses,D1,16,0,2
+BDSC,D1,1,84,3
+BDSC,D1,2,37,3
+BDSC,D1,3,63,3
+BDSC,D1,4,81,3
+BDSC,D1,5,0,3
+BDSC,D1,6,55,3
+BDSC,D1,7,0,3
+BDSC,D1,8,0,3
+BDSC,D1,9,99,4
+BDSC,D1,10,54,4
+BDSC,D1,11,49,4
+BDSC,D1,12,37,4
+BDSC,D1,13,0,4
+BDSC,D1,14,55,4
+BDSC,D1,15,0,4
+BDSC,D1,16,0,4
+Grape Juice,D3,1,96,5
+Grape Juice,D3,2,47,5
+Grape Juice,D3,3,5,5
+Grape Juice,D3,4,36,5
+Grape Juice,D3,5,10,5
+Grape Juice,D3,6,5,5
+Grape Juice,D3,7,8,5
+Grape Juice,D3,8,20,5
+Grape Juice,D3,9,10,6
+Grape Juice,D3,10,11,6
+Grape Juice,D3,11,8,6
+Grape Juice,D3,12,10,6
+Grape Juice,D3,13,5,6
+Grape Juice,D3,14,6,6
+Grape Juice,D3,15,10,6
+Grape Juice,D3,16,7,6
+Molasses,D3,1,0,1
+Molasses,D3,2,14,1
+Molasses,D3,3,1,1
+Molasses,D3,4,103,1
+Molasses,D3,5,72,1
+Molasses,D3,6,8,1
+Molasses,D3,7,17,1
+Molasses,D3,8,2,1
+Molasses,D3,9,0,2
+Molasses,D3,10,5,2
+Molasses,D3,11,4,2
+Molasses,D3,12,2,2
+Molasses,D3,13,7,2
+Molasses,D3,14,30,2
+Molasses,D3,15,2,2
+Molasses,D3,16,6,2
+BDSC,D3,1,4,3
+BDSC,D3,2,8,3
+BDSC,D3,3,4,3
+BDSC,D3,4,6,3
+BDSC,D3,5,31,3
+BDSC,D3,6,5,3
+BDSC,D3,7,3,3
+BDSC,D3,8,17,3
+BDSC,D3,9,0,4
+BDSC,D3,10,0,4
+BDSC,D3,11,1,4
+BDSC,D3,12,2,4
+BDSC,D3,13,42,4
+BDSC,D3,14,2,4
+BDSC,D3,15,4,4
+BDSC,D3,16,11,4
