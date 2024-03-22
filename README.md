@@ -2,9 +2,9 @@
 
 ## Raw data and figures
 ### Contents
-'Data' : The raw data from the egg counts <br>
-'Code' : R Notebooks used to generate figures from the raw data. <br>
-'Results' : Output from R Notebooks <br>
+`Data` : The raw data from the egg counts <br>
+`Code` : R Notebooks used to generate figures from the raw data. <br>
+`Results` : Output from R Notebooks <br>
 
 ## RoboCam
 ### Contents
