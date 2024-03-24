@@ -9,6 +9,7 @@ library(stringr)
 library(ggpubr)
 library(ggbeeswarm)
 library(ggprism)
+library(ggpubr)
 ```
 
 ```{r}
@@ -45,16 +46,17 @@ FoodTypes.average$Condition <- str_trim(FoodTypes.average$Condition)
 FoodTypes.average$Condition <- factor(FoodTypes.average$Condition, levels = level_order)
 
 ggplot(data = FoodTypes.average, aes(x = Condition, y = Eggs, fill = Day)) + 
-geom_boxplot() +
-geom_point(position = position_dodge(width = 0.75)) +
-theme_prism(base_size = 10) +
-scale_fill_brewer(palette = "Blues") +
+  geom_boxplot() +
+  geom_point(position = position_dodge(width = 0.75)) +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
   xlab("Food Conditions") +
   ylab("Average Amount of Eggs Laid") +
   theme (
     axis.text = element_text(size = 20),
     axis.title = element_text(size = 20),
-  )
+  ) +
+  
 
 ggsave("../Results/Figure1.pdf")
 ```
