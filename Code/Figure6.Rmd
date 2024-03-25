@@ -1,0 +1,65 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(ggprism)
+```
+
+```{r}
+AllData <- read.csv("../Data/ChemicalExposure.csv")
+DR <- AllData %>% filter(Condition == "DMSO" | Condition == "Rap_0.1" | Condition == "Rap_10" | Condition == "Rap_25")
+DB <- AllData %>% filter(Condition == "DMSO" | Condition == "Bendiocarb_0.1" | Condition == "Bendiocarb_10" | Condition == "Bendiocarb_25")
+```
+
+```{r}
+DR$Condition <- factor(DR$Condition, levels = c('DMSO', 'Rap_0.1', 'Rap_10', 'Rap_25'))
+DR$Day <- factor(DR$Day, levels = c("D1", "D3", "D7"))
+ggplot(data = DR, aes(x = Day, y = EggCount, fill = Condition)) + 
+  geom_boxplot() +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
+  ylab("Average Amount of Eggs Laid") +
+  scale_y_continuous(limits = c(0,100)) +
+  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7"))
+
+ggsave("../Results/Fig6E_Rapamycin.pdf")
+```
+
+```{r}
+DB$Condition <- factor(DB$Condition, levels = c('DMSO', 'Bendiocarb_0.1', 'Bendiocarb_10', 'Bendiocarb_25'))
+DB$Day <- factor(DB$Day, levels = c("D1", "D3", "D7"))
+
+ggplot(data = DB, aes(x = Day, y = EggCount, fill = Condition)) + 
+  geom_boxplot() +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
+  ylab("Average Amount of Eggs Laid") +
+  scale_y_continuous(limits = c(0,100)) +
+  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7"))
+
+ggsave("../Results/Fig6F_Bendiocarb.pdf")
+```
+
+```{r}
+AllData_1 <- AllData %>% filter(Day == "D1")
+attach(AllData_1)
+pairwise.t.test(EggCount, Condition, p.adj = "bonf")
+detach(AllData_1)
+```
+
+```{r}
+AllData_3 <- AllData %>% filter(Day == "D3")
+attach(AllData_3)
+pairwise.t.test(EggCount, Condition, p.adj = "bonf")
+detach(AllData_3)
+```
+
+```{r}
+AllData_7 <- AllData %>% filter(Day == "D7")
+attach(AllData_7)
+pairwise.t.test(EggCount, Condition, p.adj = "bonf")
+detach(AllData_7)
+```
