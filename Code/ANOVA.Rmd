@@ -40,22 +40,23 @@ AllData <- AllData %>% select(Condition, Repeat, Day, EggCount, FileName, row )
 
 ```{r}
 AllData.average <- AllData %>% group_by(Condition, Repeat, Day, row) %>% summarise(Eggs = mean(EggCount))
+AllData.average <- AllData.average %>% filter(Condition != "WT")
 ```
 
 ```{r}
-anova.1 <- AllData %>% filter(Day == "D1") %>% aov(data = ., EggCount ~ Condition)
+anova.1 <- AllData.average %>% filter(Day == "D1") %>% aov(data = ., Eggs ~ Condition)
 summary(anova.1)
 TukeyHSD(anova.1)
 ```
 
 ```{r}
-anova.3 <- AllData %>% filter(Day == "D3") %>% aov(data = ., EggCount ~ Condition)
+anova.3 <- AllData.average %>% filter(Day == "D3") %>% aov(data = ., Eggs ~ Condition)
 summary(anova.3)
 TukeyHSD(anova.3)
 ```
 
 ```{r}
-anova.7 <- AllData %>% filter(Day == "D7") %>% aov(data = ., EggCount ~ Condition)
+anova.7 <- AllData.average %>% filter(Day == "D7") %>% aov(data = ., Eggs ~ Condition)
 summary(anova.7)
 TukeyHSD(anova.7)
 ```
