@@ -12,7 +12,7 @@ library(ggprism)
 ```
 
 ```{r}
-DB <- read.csv("../EggLayAssay/Data/DMSOvsBendiocarb.csv")
+DB <- read.csv("../Data/DMSOvsBendiocarb.csv")
 ```
 
 ```{r}
@@ -65,3 +65,6 @@ scale_fill_brewer(palette = "Blues") +
 
 ggsave("../Results/DMSOvs.Bendiocarb.pdf")
 ```
+
+
+

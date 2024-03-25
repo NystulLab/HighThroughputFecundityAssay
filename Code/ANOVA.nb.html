@@ -1754,68 +1754,156 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHN0cmluZ3IpXG5saWJyYXJ5KGdncHVicilcbmxpYnJhcnkoZ2diZWVzd2FybSlcbmxpYnJhcnkoZ2dwcmlzbSlcbmBgYCJ9 -->
-<pre class="r"><code>library(tidyverse)
-library(stringr)
-library(ggpubr)
-library(ggbeeswarm)
-library(ggprism)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIgPC0gcmVhZC5jc3YoXCIuLi9EYXRhL0RNU092c0JlbmRpb2NhcmIuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>DB &lt;- read.csv(&quot;../Data/DMSOvsBendiocarb.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSA8LSByZWFkLmNzdihcIi4uL0RhdGEvRWdnQ291bnRzRDFEN19SMVI3LjIuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>AllData &lt;- read.csv(&quot;../Data/EggCountsD1D7_R1R7.2.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIgPC0gREIgJT4lIHNlbGVjdChDb25kaXRpb24sIFJlcGVhdCwgRGF5LCBFZ2dDb3VudCwgRmlsZU5hbWUgKSBcbmBgYCJ9 -->
-<pre class="r"><code>DB &lt;- DB %&gt;% select(Condition, Repeat, Day, EggCount, FileName ) </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSA8LSBBbGxEYXRhICU+JSBzZWxlY3QoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgRWdnQ291bnQsIEZpbGVOYW1lICkgXG5gYGAifQ== -->
+<pre class="r"><code>AllData &lt;- AllData %&gt;% select(Condition, Repeat, Day, EggCount, FileName ) </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIkd2VsbCA8LSBzdHJfc3ViKERCJEZpbGVOYW1lLCA2LCA3KVxuREIkd2VsbCA8LSBzdHJfcmVtb3ZlKERCJHdlbGwsIFwiX1wiKVxuREIkd2VsbCA8LSBhcy5udW1lcmljKERCJHdlbGwpXG5gYGAifQ== -->
-<pre class="r"><code>DB$well &lt;- str_sub(DB$FileName, 6, 7)
-DB$well &lt;- str_remove(DB$well, &quot;_&quot;)
-DB$well &lt;- as.numeric(DB$well)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSR3ZWxsIDwtIHN0cl9zdWIoQWxsRGF0YSRGaWxlTmFtZSwgNiwgNylcbmBgYCJ9 -->
+<pre class="r"><code>AllData$well &lt;- str_sub(AllData$FileName, 6, 7)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSR3ZWxsIDwtIHN0cl9yZW1vdmUoQWxsRGF0YSR3ZWxsLCBcIl9cIilcbmBgYCJ9 -->
+<pre class="r"><code>AllData$well &lt;- str_remove(AllData$well, &quot;_&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSR3ZWxsIDwtIGFzLm51bWVyaWMoQWxsRGF0YSR3ZWxsKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$well &lt;- as.numeric(AllData$well)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIkcm93MSA8LSBpZmVsc2UoREIkd2VsbCA8IDksIDEsIDApXG5EQiRyb3cyIDwtIGlmZWxzZShEQiR3ZWxsID4gOCAmIERCJHdlbGwgPCAxNywgMiwgMClcbkRCJHJvdzMgPC0gaWZlbHNlKERCJHdlbGwgPiAxNiAmIERCJHdlbGwgPCAyNSwgMywgMClcbkRCJHJvdzQgPC0gaWZlbHNlKERCJHdlbGwgPiAyNCAmIERCJHdlbGwgPCAzMywgNCwgMClcbkRCJHJvdzUgPC0gaWZlbHNlKERCJHdlbGwgPiAzMiAmIERCJHdlbGwgPCA0MSwgNSwgMClcbkRCJHJvdzYgPC0gaWZlbHNlKERCJHdlbGwgPiA0MCAmIERCJHdlbGwgPCA0OSwgNiwgMClcbmBgYCJ9 -->
-<pre class="r"><code>DB$row1 &lt;- ifelse(DB$well &lt; 9, 1, 0)
-DB$row2 &lt;- ifelse(DB$well &gt; 8 &amp; DB$well &lt; 17, 2, 0)
-DB$row3 &lt;- ifelse(DB$well &gt; 16 &amp; DB$well &lt; 25, 3, 0)
-DB$row4 &lt;- ifelse(DB$well &gt; 24 &amp; DB$well &lt; 33, 4, 0)
-DB$row5 &lt;- ifelse(DB$well &gt; 32 &amp; DB$well &lt; 41, 5, 0)
-DB$row6 &lt;- ifelse(DB$well &gt; 40 &amp; DB$well &lt; 49, 6, 0)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3cxIDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPCA5LCAxLCAwKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$row1 &lt;- ifelse(AllData$well &lt; 9, 1, 0)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3cyIDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiA4ICYgQWxsRGF0YSR3ZWxsIDwgMTcsIDIsIDApXG5gYGAifQ== -->
+<pre class="r"><code>AllData$row2 &lt;- ifelse(AllData$well &gt; 8 &amp; AllData$well &lt; 17, 2, 0)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3czIDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiAxNiAmIEFsbERhdGEkd2VsbCA8IDI1LCAzLCAwKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$row3 &lt;- ifelse(AllData$well &gt; 16 &amp; AllData$well &lt; 25, 3, 0)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3c0IDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiAyNCAmIEFsbERhdGEkd2VsbCA8IDMzLCA0LCAwKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$row4 &lt;- ifelse(AllData$well &gt; 24 &amp; AllData$well &lt; 33, 4, 0)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3c1IDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiAzMiAmIEFsbERhdGEkd2VsbCA8IDQxLCA1LCAwKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$row5 &lt;- ifelse(AllData$well &gt; 32 &amp; AllData$well &lt; 41, 5, 0)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSRyb3c2IDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiA0MCAmIEFsbERhdGEkd2VsbCA8IDQ5LCA2LCAwKVxuYGBgIn0= -->
+<pre class="r"><code>AllData$row6 &lt;- ifelse(AllData$well &gt; 40 &amp; AllData$well &lt; 49, 6, 0)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIgPC0gREIgJT4lIHJvd3dpc2UoKSAlPiUgbXV0YXRlKHJvdyA9IHN1bShyb3cxLCByb3cyLCByb3czLCByb3c0LCByb3c1LCByb3c2KSlcbmBgYCJ9 -->
-<pre class="r"><code>DB &lt;- DB %&gt;% rowwise() %&gt;% mutate(row = sum(row1, row2, row3, row4, row5, row6))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSA8LSBBbGxEYXRhICU+JSByb3d3aXNlKCkgJT4lIG11dGF0ZShyb3cgPSBzdW0ocm93MSwgcm93Miwgcm93Mywgcm93NCwgcm93NSwgcm93NikpXG5gYGAifQ== -->
+<pre class="r"><code>AllData &lt;- AllData %&gt;% rowwise() %&gt;% mutate(row = sum(row1, row2, row3, row4, row5, row6))</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIgPC0gREIgJT4lIHNlbGVjdChDb25kaXRpb24sIFJlcGVhdCwgRGF5LCBFZ2dDb3VudCwgRmlsZU5hbWUsIHJvdyApIFxuYGBgIn0= -->
-<pre class="r"><code>DB &lt;- DB %&gt;% select(Condition, Repeat, Day, EggCount, FileName, row ) </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YSA8LSBBbGxEYXRhICU+JSBzZWxlY3QoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgRWdnQ291bnQsIEZpbGVOYW1lLCByb3cgKSBcbmBgYCJ9 -->
+<pre class="r"><code>AllData &lt;- AllData %&gt;% select(Condition, Repeat, Day, EggCount, FileName, row ) </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuREIuYXZlcmFnZSA8LSBEQiAlPiUgZ3JvdXBfYnkoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgcm93KSAlPiUgc3VtbWFyaXNlKEVnZ3MgPSBtZWFuKEVnZ0NvdW50KSlcbmBgYCJ9 -->
-<pre class="r"><code>DB.average &lt;- DB %&gt;% group_by(Condition, Repeat, Day, row) %&gt;% summarise(Eggs = mean(EggCount))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQWxsRGF0YS5hdmVyYWdlIDwtIEFsbERhdGEgJT4lIGdyb3VwX2J5KENvbmRpdGlvbiwgUmVwZWF0LCBEYXksIHJvdykgJT4lIHN1bW1hcmlzZShFZ2dzID0gbWVhbihFZ2dDb3VudCkpXG5gYGAifQ== -->
+<pre class="r"><code>AllData.average &lt;- AllData %&gt;% group_by(Condition, Repeat, Day, row) %&gt;% summarise(Eggs = mean(EggCount))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiYHN1bW1hcmlzZSgpYCBoYXMgZ3JvdXBlZCBvdXRwdXQgYnkgJ0NvbmRpdGlvbicsICdSZXBlYXQnLCAnRGF5Jy4gWW91IGNhbiBvdmVycmlkZSB1c2luZyB0aGUgYC5ncm91cHNgIGFyZ3VtZW50LlxuIn0= -->
 <pre><code>`summarise()` has grouped output by &#39;Condition&#39;, &#39;Repeat&#39;, &#39;Day&#39;. You can override using the `.groups` argument.</code></pre>
@@ -1824,30 +1912,153 @@ DB$row6 &lt;- ifelse(DB$well &gt; 40 &amp; DB$well &lt; 49, 6, 0)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGV2ZWxfb3JkZXIgPC0gYygnRE1TTycsICdDaGVtM18wLjEnLCAnQ2hlbTNfMTAnLCAnQ2hlbTNfMjUnKVxuXG5EQi5hdmVyYWdlJENvbmRpdGlvbiA8LSBmYWN0b3IoREIuYXZlcmFnZSRDb25kaXRpb24sIGxldmVscyA9IGxldmVsX29yZGVyKVxuZ2dwbG90KGRhdGEgPSBEQi5hdmVyYWdlLCBhZXMoeCA9IENvbmRpdGlvbiwgeSA9IEVnZ3MsIGZpbGwgPSBEYXkpKSArIFxuZ2VvbV9ib3hwbG90KCkgK1xuZ2VvbV9wb2ludChwb3NpdGlvbiA9IHBvc2l0aW9uX2RvZGdlKHdpZHRoID0gMC43NSkpICtcbnRoZW1lX3ByaXNtKGJhc2Vfc2l6ZSA9IDEwKSArXG5zY2FsZV9maWxsX2JyZXdlcihwYWxldHRlID0gXCJCbHVlc1wiKSArXG4gIHhsYWIoXCJDaGVtaWNhbHNcIikgK1xuICB5bGFiKFwiQXZlcmFnZSBBbW91bnQgb2YgRWdncyBMYWlkXCIpICtcbiBzY2FsZV94X2Rpc2NyZXRlKGxhYmVscyA9IGMoJzAuMSUgRE1TMCcsICdiZW5kaW9jYXJiICgwLjEgdU0pJywgJ2JlbmRpb2NhcmIgKDEwIHVNKScsICdiZW5kaW9jYXJiICgyNSB1TSknKSkgK1xuICAgdGhlbWUgKFxuICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChzaXplID0gMjIpLFxuICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoc2l6ZSA9IDIyKSxcbiAgKVxuXG5nZ3NhdmUoXCIuLi9SZXN1bHRzL0RNU092cy5CZW5kaW9jYXJiLnBkZlwiKVxuYGBgIn0= -->
-<pre class="r"><code>level_order &lt;- c(&#39;DMSO&#39;, &#39;Chem3_0.1&#39;, &#39;Chem3_10&#39;, &#39;Chem3_25&#39;)
-
-DB.average$Condition &lt;- factor(DB.average$Condition, levels = level_order)
-ggplot(data = DB.average, aes(x = Condition, y = Eggs, fill = Day)) + 
-geom_boxplot() +
-geom_point(position = position_dodge(width = 0.75)) +
-theme_prism(base_size = 10) +
-scale_fill_brewer(palette = &quot;Blues&quot;) +
-  xlab(&quot;Chemicals&quot;) +
-  ylab(&quot;Average Amount of Eggs Laid&quot;) +
- scale_x_discrete(labels = c(&#39;0.1% DMS0&#39;, &#39;bendiocarb (0.1 uM)&#39;, &#39;bendiocarb (10 uM)&#39;, &#39;bendiocarb (25 uM)&#39;)) +
-   theme (
-    axis.text = element_text(size = 22),
-    axis.title = element_text(size = 22),
-  )
-
-ggsave(&quot;../Results/DMSOvs.Bendiocarb.pdf&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVHVrZXlIU0QoYW5vdmEuMSlcblxuYGBgIn0= -->
+<pre class="r"><code>TukeyHSD(anova.1)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICBUdWtleSBtdWx0aXBsZSBjb21wYXJpc29ucyBvZiBtZWFuc1xuICAgIDk1JSBmYW1pbHktd2lzZSBjb25maWRlbmNlIGxldmVsXG5cbkZpdDogYW92KGZvcm11bGEgPSBFZ2dDb3VudCB+IENvbmRpdGlvbiwgZGF0YSA9IC4pXG5cbiRDb25kaXRpb25cbiAgICAgICAgICAgICAgICAgICAgICAgICAgZGlmZiAgICAgICAgbHdyICAgICAgICAgIHVwciAgICAgcCBhZGpcbkNoZW0zXzEwLUNoZW0zXzAuMSAgLTMuMjkzNzMwNCAtMTIuNTg5MTQwICAgNi4wMDE2Nzg4NiAwLjk2MTYxOTlcbkNoZW0zXzI1LUNoZW0zXzAuMSAtMTYuMDg3NTkxMiAtMjQuOTA0MDIzICAtNy4yNzExNTk0MSAwLjAwMDAwMTFcbkRNU08tQ2hlbTNfMC4xICAgICAgLTAuNzI0MDg3NiAgLTkuNDkzMTYxICAgOC4wNDQ5ODYxNiAwLjk5OTk5NjlcblJhcF8wLjEtQ2hlbTNfMC4xICAtMTEuOTI1OTc0NCAtMjEuMzY1MDE5ICAtMi40ODY5MjkzMSAwLjAwMzMwODhcblJhcF8xMC1DaGVtM18wLjEgICAtMTAuOTI0MDg3NiAtMjEuMTkxNTQxICAtMC42NTY2MzQ0NiAwLjAyNzc1NDRcblJhcF8yNS1DaGVtM18wLjEgICAtMjAuMDAzNzE3MiAtMjkuMzkzMzU5IC0xMC42MTQwNzU1MiAwLjAwMDAwMDBcbldULUNoZW0zXzAuMSAgICAgICAgLTguMjU5NDI1OSAtMTcuMTQxODk5ICAgMC42MjMwNDc1MCAwLjA5MDE2ODdcbkNoZW0zXzI1LUNoZW0zXzEwICAtMTIuNzkzODYwOCAtMjIuMDg5MjcwICAtMy40OTg0NTE0OCAwLjAwMDgyODlcbkRNU08tQ2hlbTNfMTAgICAgICAgIDIuNTY5NjQyOSAgLTYuNjgwODYxICAxMS44MjAxNDY1NCAwLjk5MDUwMjJcblJhcF8wLjEtQ2hlbTNfMTAgICAgLTguNjMyMjQzOSAtMTguNTIwMTUzICAgMS4yNTU2NjQ2NCAwLjEzOTAyNDdcblJhcF8xMC1DaGVtM18xMCAgICAgLTcuNjMwMzU3MSAtMTguMzExOTE5ICAgMy4wNTEyMDQ0NSAwLjM3MTAwNjNcblJhcF8yNS1DaGVtM18xMCAgICAtMTYuNzA5OTg2OCAtMjYuNTUwNzQ2ICAtNi44NjkyMjc4OSAwLjAwMDAwODRcbldULUNoZW0zXzEwICAgICAgICAgLTQuOTY1Njk1NSAtMTQuMzIzNzY3ICAgNC4zOTIzNzU4MSAwLjc0MzE3MTZcbkRNU08tQ2hlbTNfMjUgICAgICAgMTUuMzYzNTAzNiAgIDYuNTk0NDMwICAyNC4xMzI1Nzc0MCAwLjAwMDAwMzVcblJhcF8wLjEtQ2hlbTNfMjUgICAgIDQuMTYxNjE2OSAgLTUuMjc3NDI4ICAxMy42MDA2NjE5MyAwLjg4MzYyOTRcblJhcF8xMC1DaGVtM18yNSAgICAgIDUuMTYzNTAzNiAgLTUuMTAzOTQ5ICAxNS40MzA5NTY3OCAwLjc5MjQ0MjFcblJhcF8yNS1DaGVtM18yNSAgICAgLTMuOTE2MTI2MCAtMTMuMzA1NzY4ICAgNS40NzM1MTU3MiAwLjkxMDgwNzdcbldULUNoZW0zXzI1ICAgICAgICAgIDcuODI4MTY1MyAgLTEuMDU0MzA4ICAxNi43MTA2Mzg3NCAwLjEzMDg1MDBcblJhcF8wLjEtRE1TTyAgICAgICAtMTEuMjAxODg2OCAtMjAuNTk2NzEzICAtMS44MDcwNjA3NiAwLjAwNzQxMjdcblJhcF8xMC1ETVNPICAgICAgICAtMTAuMjAwMDAwMCAtMjAuNDI2ODE3ICAgMC4wMjY4MTY2MiAwLjA1MTE2OTFcblJhcF8yNS1ETVNPICAgICAgICAtMTkuMjc5NjI5NiAtMjguNjI0ODE5ICAtOS45MzQ0NDA3NCAwLjAwMDAwMDBcbldULURNU08gICAgICAgICAgICAgLTcuNTM1MzM4MyAtMTYuMzcwODA4ICAgMS4zMDAxMzEwMCAwLjE2MDQ4NDZcblJhcF8xMC1SYXBfMC4xICAgICAgIDEuMDAxODg2OCAgLTkuODA0OTAzICAxMS44MDg2NzYxMiAwLjk5OTk5MzFcblJhcF8yNS1SYXBfMC4xICAgICAgLTguMDc3NzQyOCAtMTguMDU0Mjg5ICAgMS44OTg4MDMzMSAwLjIxNDMzOTZcbldULVJhcF8wLjEgICAgICAgICAgIDMuNjY2NTQ4NCAgLTUuODM0MjExICAxMy4xNjczMDgyMSAwLjkzOTY1MDRcblJhcF8yNS1SYXBfMTAgICAgICAgLTkuMDc5NjI5NiAtMTkuODQzMjk1ICAgMS42ODQwMzU4NyAwLjE3MTE3MTZcbldULVJhcF8xMCAgICAgICAgICAgIDIuNjY0NjYxNyAgLTcuNjU5NTU1ICAxMi45ODg4Nzg3MiAwLjk5MzkyMTBcbldULVJhcF8yNSAgICAgICAgICAgMTEuNzQ0MjkxMyAgIDIuMjkyNjEyICAyMS4xOTU5NzAyNiAwLjAwNDIxNjlcbiJ9 -->
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = EggCount ~ Condition, data = .)
+
+$Condition
+                          diff        lwr          upr     p adj
+Chem3_10-Chem3_0.1  -3.2937304 -12.589140   6.00167886 0.9616199
+Chem3_25-Chem3_0.1 -16.0875912 -24.904023  -7.27115941 0.0000011
+DMSO-Chem3_0.1      -0.7240876  -9.493161   8.04498616 0.9999969
+Rap_0.1-Chem3_0.1  -11.9259744 -21.365019  -2.48692931 0.0033088
+Rap_10-Chem3_0.1   -10.9240876 -21.191541  -0.65663446 0.0277544
+Rap_25-Chem3_0.1   -20.0037172 -29.393359 -10.61407552 0.0000000
+WT-Chem3_0.1        -8.2594259 -17.141899   0.62304750 0.0901687
+Chem3_25-Chem3_10  -12.7938608 -22.089270  -3.49845148 0.0008289
+DMSO-Chem3_10        2.5696429  -6.680861  11.82014654 0.9905022
+Rap_0.1-Chem3_10    -8.6322439 -18.520153   1.25566464 0.1390247
+Rap_10-Chem3_10     -7.6303571 -18.311919   3.05120445 0.3710063
+Rap_25-Chem3_10    -16.7099868 -26.550746  -6.86922789 0.0000084
+WT-Chem3_10         -4.9656955 -14.323767   4.39237581 0.7431716
+DMSO-Chem3_25       15.3635036   6.594430  24.13257740 0.0000035
+Rap_0.1-Chem3_25     4.1616169  -5.277428  13.60066193 0.8836294
+Rap_10-Chem3_25      5.1635036  -5.103949  15.43095678 0.7924421
+Rap_25-Chem3_25     -3.9161260 -13.305768   5.47351572 0.9108077
+WT-Chem3_25          7.8281653  -1.054308  16.71063874 0.1308500
+Rap_0.1-DMSO       -11.2018868 -20.596713  -1.80706076 0.0074127
+Rap_10-DMSO        -10.2000000 -20.426817   0.02681662 0.0511691
+Rap_25-DMSO        -19.2796296 -28.624819  -9.93444074 0.0000000
+WT-DMSO             -7.5353383 -16.370808   1.30013100 0.1604846
+Rap_10-Rap_0.1       1.0018868  -9.804903  11.80867612 0.9999931
+Rap_25-Rap_0.1      -8.0777428 -18.054289   1.89880331 0.2143396
+WT-Rap_0.1           3.6665484  -5.834211  13.16730821 0.9396504
+Rap_25-Rap_10       -9.0796296 -19.843295   1.68403587 0.1711716
+WT-Rap_10            2.6646617  -7.659555  12.98887872 0.9939210
+WT-Rap_25           11.7442913   2.292612  21.19597026 0.0042169</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5vdmEuMyA8LSBBbGxEYXRhICU+JSBmaWx0ZXIoRGF5ID09IFwiRDNcIikgJT4lIGFvdihkYXRhID0gLiwgRWdnQ291bnQgfiBDb25kaXRpb24pXG5zdW1tYXJ5KGFub3ZhLjMpXG5gYGAifQ== -->
+<pre class="r"><code>anova.3 &lt;- AllData %&gt;% filter(Day == &quot;D3&quot;) %&gt;% aov(data = ., EggCount ~ Condition)
+summary(anova.3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIERmIFN1bSBTcSBNZWFuIFNxIEYgdmFsdWUgUHIoPkYpICAgIFxuQ29uZGl0aW9uICAgICA3IDI0OTk5MCAgIDM1NzEzICAgNzUuODYgPDJlLTE2ICoqKlxuUmVzaWR1YWxzICAgOTE3IDQzMTcwNCAgICAgNDcxICAgICAgICAgICAgICAgICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG4ifQ== -->
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Condition     7 249990   35713   75.86 &lt;2e-16 ***
+Residuals   917 431704     471                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVHVrZXlIU0QoYW5vdmEuMylcbmBgYCJ9 -->
+<pre class="r"><code>TukeyHSD(anova.3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICBUdWtleSBtdWx0aXBsZSBjb21wYXJpc29ucyBvZiBtZWFuc1xuICAgIDk1JSBmYW1pbHktd2lzZSBjb25maWRlbmNlIGxldmVsXG5cbkZpdDogYW92KGZvcm11bGEgPSBFZ2dDb3VudCB+IENvbmRpdGlvbiwgZGF0YSA9IC4pXG5cbiRDb25kaXRpb25cbiAgICAgICAgICAgICAgICAgICAgICAgICAgZGlmZiAgICAgICAgbHdyICAgICAgICB1cHIgICAgIHAgYWRqXG5DaGVtM18xMC1DaGVtM18wLjEgLTE0LjY5NTEzNDYgLTIzLjA3ODI3MiAgLTYuMzExOTk3IDAuMDAwMDAzNVxuQ2hlbTNfMjUtQ2hlbTNfMC4xIC00MS4xOTE2Nzg0IC00OS4zNDc4MzIgLTMzLjAzNTUyNSAwLjAwMDAwMDBcbkRNU08tQ2hlbTNfMC4xICAgICAgIDAuMzY0Mzg5MiAgLTcuNDQ4NDU4ICAgOC4xNzcyMzcgMC45OTk5OTk5XG5SYXBfMC4xLUNoZW0zXzAuMSAgLTE1LjgzODY2NTYgLTI0LjM1MTc2MiAgLTcuMzI1NTY5IDAuMDAwMDAwNlxuUmFwXzEwLUNoZW0zXzAuMSAgIC0yNy4xOTY5MjAzIC0zNi40NTk0MzMgLTE3LjkzNDQwNyAwLjAwMDAwMDBcblJhcF8yNS1DaGVtM18wLjEgICAtNDEuODYzMTI0MCAtNTAuMzMxNTIyIC0zMy4zOTQ3MjYgMC4wMDAwMDAwXG5XVC1DaGVtM18wLjEgICAgICAgIC00LjQxMzk2NTcgLTEyLjgzOTA2NiAgIDQuMDExMTM1IDAuNzU1NDYxNFxuQ2hlbTNfMjUtQ2hlbTNfMTAgIC0yNi40OTY1NDM4IC0zNS4wODkwNzggLTE3LjkwNDAwOSAwLjAwMDAwMDBcbkRNU08tQ2hlbTNfMTAgICAgICAgMTUuMDU5NTIzOCAgIDYuNzkyMTU1ICAyMy4zMjY4OTMgMC4wMDAwMDExXG5SYXBfMC4xLUNoZW0zXzEwICAgIC0xLjE0MzUzMTAgLTEwLjA3NTU4NyAgIDcuNzg4NTI1IDAuOTk5OTM3NFxuUmFwXzEwLUNoZW0zXzEwICAgIC0xMi41MDE3ODU3IC0yMi4xNTA3NzMgIC0yLjg1Mjc5OCAwLjAwMjI2MDVcblJhcF8yNS1DaGVtM18xMCAgICAtMjcuMTY3OTg5NCAtMzYuMDU3NDUzIC0xOC4yNzg1MjUgMC4wMDAwMDAwXG5XVC1DaGVtM18xMCAgICAgICAgIDEwLjI4MTE2ODggICAxLjQzMjk0MiAgMTkuMTI5Mzk2IDAuMDEwMzAxNFxuRE1TTy1DaGVtM18yNSAgICAgICA0MS41NTYwNjc2ICAzMy41MTg5NTEgIDQ5LjU5MzE4NCAwLjAwMDAwMDBcblJhcF8wLjEtQ2hlbTNfMjUgICAgMjUuMzUzMDEyOCAgMTYuNjMzNjQwICAzNC4wNzIzODYgMC4wMDAwMDAwXG5SYXBfMTAtQ2hlbTNfMjUgICAgIDEzLjk5NDc1ODEgICA0LjU0MjMwOCAgMjMuNDQ3MjA4IDAuMDAwMjA3OFxuUmFwXzI1LUNoZW0zXzI1ICAgICAtMC42NzE0NDU2ICAtOS4zNDcxODMgICA4LjAwNDI5MiAwLjk5OTk5ODBcbldULUNoZW0zXzI1ICAgICAgICAgMzYuNzc3NzEyNiAgMjguMTQ0MjMzICA0NS40MTExOTIgMC4wMDAwMDAwXG5SYXBfMC4xLURNU08gICAgICAgLTE2LjIwMzA1NDggLTI0LjYwMjE3NSAgLTcuODAzOTM1IDAuMDAwMDAwMlxuUmFwXzEwLURNU08gICAgICAgIC0yNy41NjEzMDk1IC0zNi43MTkxNzggLTE4LjQwMzQ0MSAwLjAwMDAwMDBcblJhcF8yNS1ETVNPICAgICAgICAtNDIuMjI3NTEzMiAtNTAuNTgxMzI1IC0zMy44NzM3MDIgMC4wMDAwMDAwXG5XVC1ETVNPICAgICAgICAgICAgIC00Ljc3ODM1NTAgLTEzLjA4ODI3MiAgIDMuNTMxNTYyIDAuNjU2MjgyM1xuUmFwXzEwLVJhcF8wLjEgICAgIC0xMS4zNTgyNTQ3IC0yMS4xMjAzNjQgIC0xLjU5NjE0NSAwLjAxMDEzMTlcblJhcF8yNS1SYXBfMC4xICAgICAtMjYuMDI0NDU4NCAtMzUuMDM2NTgzIC0xNy4wMTIzMzMgMC4wMDAwMDAwXG5XVC1SYXBfMC4xICAgICAgICAgIDExLjQyNDY5OTggICAyLjQ1MzI0OCAgMjAuMzk2MTUyIDAuMDAyOTQ1MFxuUmFwXzI1LVJhcF8xMCAgICAgIC0xNC42NjYyMDM3IC0yNC4zODkzNTggIC00Ljk0MzA0OSAwLjAwMDE0MTFcbldULVJhcF8xMCAgICAgICAgICAgMjIuNzgyOTU0NSAgMTMuMDk3NDg3ICAzMi40Njg0MjIgMC4wMDAwMDAwXG5XVC1SYXBfMjUgICAgICAgICAgIDM3LjQ0OTE1ODIgIDI4LjUyMDExMCAgNDYuMzc4MjA2IDAuMDAwMDAwMFxuIn0= -->
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KHN0cmluZ3IpCmxpYnJhcnkoZ2dwdWJyKQpsaWJyYXJ5KGdnYmVlc3dhcm0pCmxpYnJhcnkoZ2dwcmlzbSkKYGBgCgpgYGB7cn0KREIgPC0gcmVhZC5jc3YoIi4uL0RhdGEvRE1TT3ZzQmVuZGlvY2FyYi5jc3YiKQpgYGAKCmBgYHtyfQpEQiA8LSBEQiAlPiUgc2VsZWN0KENvbmRpdGlvbiwgUmVwZWF0LCBEYXksIEVnZ0NvdW50LCBGaWxlTmFtZSApIApgYGAKCmBgYHtyfQpEQiR3ZWxsIDwtIHN0cl9zdWIoREIkRmlsZU5hbWUsIDYsIDcpCkRCJHdlbGwgPC0gc3RyX3JlbW92ZShEQiR3ZWxsLCAiXyIpCkRCJHdlbGwgPC0gYXMubnVtZXJpYyhEQiR3ZWxsKQpgYGAKCmBgYHtyfQpEQiRyb3cxIDwtIGlmZWxzZShEQiR3ZWxsIDwgOSwgMSwgMCkKREIkcm93MiA8LSBpZmVsc2UoREIkd2VsbCA+IDggJiBEQiR3ZWxsIDwgMTcsIDIsIDApCkRCJHJvdzMgPC0gaWZlbHNlKERCJHdlbGwgPiAxNiAmIERCJHdlbGwgPCAyNSwgMywgMCkKREIkcm93NCA8LSBpZmVsc2UoREIkd2VsbCA+IDI0ICYgREIkd2VsbCA8IDMzLCA0LCAwKQpEQiRyb3c1IDwtIGlmZWxzZShEQiR3ZWxsID4gMzIgJiBEQiR3ZWxsIDwgNDEsIDUsIDApCkRCJHJvdzYgPC0gaWZlbHNlKERCJHdlbGwgPiA0MCAmIERCJHdlbGwgPCA0OSwgNiwgMCkKYGBgCgpgYGB7cn0KREIgPC0gREIgJT4lIHJvd3dpc2UoKSAlPiUgbXV0YXRlKHJvdyA9IHN1bShyb3cxLCByb3cyLCByb3czLCByb3c0LCByb3c1LCByb3c2KSkKYGBgCgpgYGB7cn0KREIgPC0gREIgJT4lIHNlbGVjdChDb25kaXRpb24sIFJlcGVhdCwgRGF5LCBFZ2dDb3VudCwgRmlsZU5hbWUsIHJvdyApIApgYGAKCmBgYHtyfQpEQi5hdmVyYWdlIDwtIERCICU+JSBncm91cF9ieShDb25kaXRpb24sIFJlcGVhdCwgRGF5LCByb3cpICU+JSBzdW1tYXJpc2UoRWdncyA9IG1lYW4oRWdnQ291bnQpKQpgYGAKCmBgYHtyfQpsZXZlbF9vcmRlciA8LSBjKCdETVNPJywgJ0NoZW0zXzAuMScsICdDaGVtM18xMCcsICdDaGVtM18yNScpCgpEQi5hdmVyYWdlJENvbmRpdGlvbiA8LSBmYWN0b3IoREIuYXZlcmFnZSRDb25kaXRpb24sIGxldmVscyA9IGxldmVsX29yZGVyKQpnZ3Bsb3QoZGF0YSA9IERCLmF2ZXJhZ2UsIGFlcyh4ID0gQ29uZGl0aW9uLCB5ID0gRWdncywgZmlsbCA9IERheSkpICsgCmdlb21fYm94cGxvdCgpICsKZ2VvbV9wb2ludChwb3NpdGlvbiA9IHBvc2l0aW9uX2RvZGdlKHdpZHRoID0gMC43NSkpICsKdGhlbWVfcHJpc20oYmFzZV9zaXplID0gMTApICsKc2NhbGVfZmlsbF9icmV3ZXIocGFsZXR0ZSA9ICJCbHVlcyIpICsKICB4bGFiKCJDaGVtaWNhbHMiKSArCiAgeWxhYigiQXZlcmFnZSBBbW91bnQgb2YgRWdncyBMYWlkIikgKwogc2NhbGVfeF9kaXNjcmV0ZShsYWJlbHMgPSBjKCcwLjElIERNUzAnLCAnYmVuZGlvY2FyYiAoMC4xIHVNKScsICdiZW5kaW9jYXJiICgxMCB1TSknLCAnYmVuZGlvY2FyYiAoMjUgdU0pJykpICsKICAgdGhlbWUgKAogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMiksCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAyMiksCiAgKQoKZ2dzYXZlKCIuLi9SZXN1bHRzL0RNU092cy5CZW5kaW9jYXJiLnBkZiIpCmBgYAoKCgo=</div>
+Fit: aov(formula = EggCount ~ Condition, data = .)
+
+$Condition
+                          diff        lwr        upr     p adj
+Chem3_10-Chem3_0.1 -14.6951346 -23.078272  -6.311997 0.0000035
+Chem3_25-Chem3_0.1 -41.1916784 -49.347832 -33.035525 0.0000000
+DMSO-Chem3_0.1       0.3643892  -7.448458   8.177237 0.9999999
+Rap_0.1-Chem3_0.1  -15.8386656 -24.351762  -7.325569 0.0000006
+Rap_10-Chem3_0.1   -27.1969203 -36.459433 -17.934407 0.0000000
+Rap_25-Chem3_0.1   -41.8631240 -50.331522 -33.394726 0.0000000
+WT-Chem3_0.1        -4.4139657 -12.839066   4.011135 0.7554614
+Chem3_25-Chem3_10  -26.4965438 -35.089078 -17.904009 0.0000000
+DMSO-Chem3_10       15.0595238   6.792155  23.326893 0.0000011
+Rap_0.1-Chem3_10    -1.1435310 -10.075587   7.788525 0.9999374
+Rap_10-Chem3_10    -12.5017857 -22.150773  -2.852798 0.0022605
+Rap_25-Chem3_10    -27.1679894 -36.057453 -18.278525 0.0000000
+WT-Chem3_10         10.2811688   1.432942  19.129396 0.0103014
+DMSO-Chem3_25       41.5560676  33.518951  49.593184 0.0000000
+Rap_0.1-Chem3_25    25.3530128  16.633640  34.072386 0.0000000
+Rap_10-Chem3_25     13.9947581   4.542308  23.447208 0.0002078
+Rap_25-Chem3_25     -0.6714456  -9.347183   8.004292 0.9999980
+WT-Chem3_25         36.7777126  28.144233  45.411192 0.0000000
+Rap_0.1-DMSO       -16.2030548 -24.602175  -7.803935 0.0000002
+Rap_10-DMSO        -27.5613095 -36.719178 -18.403441 0.0000000
+Rap_25-DMSO        -42.2275132 -50.581325 -33.873702 0.0000000
+WT-DMSO             -4.7783550 -13.088272   3.531562 0.6562823
+Rap_10-Rap_0.1     -11.3582547 -21.120364  -1.596145 0.0101319
+Rap_25-Rap_0.1     -26.0244584 -35.036583 -17.012333 0.0000000
+WT-Rap_0.1          11.4246998   2.453248  20.396152 0.0029450
+Rap_25-Rap_10      -14.6662037 -24.389358  -4.943049 0.0001411
+WT-Rap_10           22.7829545  13.097487  32.468422 0.0000000
+WT-Rap_25           37.4491582  28.520110  46.378206 0.0000000</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5vdmEuNyA8LSBBbGxEYXRhICU+JSBmaWx0ZXIoRGF5ID09IFwiRDdcIikgJT4lIGFvdihkYXRhID0gLiwgRWdnQ291bnQgfiBDb25kaXRpb24pXG5zdW1tYXJ5KGFub3ZhLjcpXG5gYGAifQ== -->
+<pre class="r"><code>anova.7 &lt;- AllData %&gt;% filter(Day == &quot;D7&quot;) %&gt;% aov(data = ., EggCount ~ Condition)
+summary(anova.7)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIERmIFN1bSBTcSBNZWFuIFNxIEYgdmFsdWUgUHIoPkYpICAgIFxuQ29uZGl0aW9uICAgICA2ICAzMDYxMiAgICA1MTAyICAgMjIuMDcgPDJlLTE2ICoqKlxuUmVzaWR1YWxzICAgNTUxIDEyNzM3MCAgICAgMjMxICAgICAgICAgICAgICAgICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG4ifQ== -->
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Condition     6  30612    5102   22.07 &lt;2e-16 ***
+Residuals   551 127370     231                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVHVrZXlIU0QoYW5vdmEuNylcbmBgYCJ9 -->
+<pre class="r"><code>TukeyHSD(anova.7)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICBUdWtleSBtdWx0aXBsZSBjb21wYXJpc29ucyBvZiBtZWFuc1xuICAgIDk1JSBmYW1pbHktd2lzZSBjb25maWRlbmNlIGxldmVsXG5cbkZpdDogYW92KGZvcm11bGEgPSBFZ2dDb3VudCB+IENvbmRpdGlvbiwgZGF0YSA9IC4pXG5cbiRDb25kaXRpb25cbiAgICAgICAgICAgICAgICAgICAgICAgICAgZGlmZiAgICAgICAgbHdyICAgICAgICAgIHVwciAgICAgcCBhZGpcbkNoZW0zXzEwLUNoZW0zXzAuMSAtMTcuNDMxNTAyNSAtMjMuODc2MjUzIC0xMC45ODY3NTIxMSAwLjAwMDAwMDBcbkRNU08tQ2hlbTNfMC4xICAgICAgLTYuNDcwOTA0NyAtMTIuOTg2Mzk2ICAgMC4wNDQ1ODY4MiAwLjA1Mjk0ODRcblJhcF8wLjEtQ2hlbTNfMC4xICAgLTYuMTQyODk5NiAtMTMuMjI5MzQxICAgMC45NDM1NDE3MCAwLjEzODgzNDRcblJhcF8xMC1DaGVtM18wLjEgICAtMTEuMjc1MjUyNSAtMTguNDkxNzc5ICAtNC4wNTg3MjU3MiAwLjAwMDA5NTdcblJhcF8yNS1DaGVtM18wLjEgICAtMjMuNTU4MDM5NCAtMzAuODgxNTUzIC0xNi4yMzQ1MjU4OSAwLjAwMDAwMDBcbldULUNoZW0zXzAuMSAgICAgICAgLTQuNzE3NTYwMiAtMTEuNTI5Mzg5ICAgMi4wOTQyNjg5MiAwLjM4NDcxNzhcbkRNU08tQ2hlbTNfMTAgICAgICAgMTAuOTYwNTk3OCAgIDQuMzk2MjUzICAxNy41MjQ5NDI5NCAwLjAwMDAyMTNcblJhcF8wLjEtQ2hlbTNfMTAgICAgMTEuMjg4NjAyOSAgIDQuMTU3MjE4ICAxOC40MTk5ODc2MCAwLjAwMDA3MjNcblJhcF8xMC1DaGVtM18xMCAgICAgIDYuMTU2MjUwMCAgLTEuMTA0NDE1ICAxMy40MTY5MTQ5OSAwLjE1NzkzMTdcblJhcF8yNS1DaGVtM18xMCAgICAgLTYuMTI2NTM2OSAtMTMuNDkzNTQ4ICAgMS4yNDA0NzM4NiAwLjE3NTgwMTRcbldULUNoZW0zXzEwICAgICAgICAgMTIuNzEzOTQyMyAgIDUuODU1MzcwICAxOS41NzI1MTQ1NSAwLjAwMDAwMTNcblJhcF8wLjEtRE1TTyAgICAgICAgIDAuMzI4MDA1MSAgLTYuODY3MzczICAgNy41MjMzODM0MiAwLjk5OTk5OTVcblJhcF8xMC1ETVNPICAgICAgICAgLTQuODA0MzQ3OCAtMTIuMTI3ODc3ICAgMi41MTkxODEyNCAwLjQ1Mzc4MzhcblJhcF8yNS1ETVNPICAgICAgICAtMTcuMDg3MTM0NyAtMjQuNTE2MTEwICAtOS42NTgxNTk3NCAwLjAwMDAwMDBcbldULURNU08gICAgICAgICAgICAgIDEuNzUzMzQ0NSAgLTUuMTcxNzQzICAgOC42Nzg0MzE4NSAwLjk4OTMyNzdcblJhcF8xMC1SYXBfMC4xICAgICAgLTUuMTMyMzUyOSAtMTIuOTY4MTc0ICAgMi43MDM0Njg1NCAwLjQ1NTc4NTdcblJhcF8yNS1SYXBfMC4xICAgICAtMTcuNDE1MTM5OCAtMjUuMzQ5NjAyICAtOS40ODA2Nzc2OCAwLjAwMDAwMDBcbldULVJhcF8wLjEgICAgICAgICAgIDEuNDI1MzM5NCAgLTYuMDM5NDM1ICAgOC44OTAxMTM2NyAwLjk5NzcxMzJcblJhcF8yNS1SYXBfMTAgICAgICAtMTIuMjgyNzg2OSAtMjAuMzMzNjQ0ICAtNC4yMzE5Mjk4OCAwLjAwMDE1NjhcbldULVJhcF8xMCAgICAgICAgICAgIDYuNTU3NjkyMyAgLTEuMDMwNjg1ICAxNC4xNDYwNjkyNCAwLjE0MTQxOTdcbldULVJhcF8yNSAgICAgICAgICAgMTguODQwNDc5MiAgMTEuMTUwMjg3ICAyNi41MzA2NzEzNiAwLjAwMDAwMDBcbiJ9 -->
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = EggCount ~ Condition, data = .)
+
+$Condition
+                          diff        lwr          upr     p adj
+Chem3_10-Chem3_0.1 -17.4315025 -23.876253 -10.98675211 0.0000000
+DMSO-Chem3_0.1      -6.4709047 -12.986396   0.04458682 0.0529484
+Rap_0.1-Chem3_0.1   -6.1428996 -13.229341   0.94354170 0.1388344
+Rap_10-Chem3_0.1   -11.2752525 -18.491779  -4.05872572 0.0000957
+Rap_25-Chem3_0.1   -23.5580394 -30.881553 -16.23452589 0.0000000
+WT-Chem3_0.1        -4.7175602 -11.529389   2.09426892 0.3847178
+DMSO-Chem3_10       10.9605978   4.396253  17.52494294 0.0000213
+Rap_0.1-Chem3_10    11.2886029   4.157218  18.41998760 0.0000723
+Rap_10-Chem3_10      6.1562500  -1.104415  13.41691499 0.1579317
+Rap_25-Chem3_10     -6.1265369 -13.493548   1.24047386 0.1758014
+WT-Chem3_10         12.7139423   5.855370  19.57251455 0.0000013
+Rap_0.1-DMSO         0.3280051  -6.867373   7.52338342 0.9999995
+Rap_10-DMSO         -4.8043478 -12.127877   2.51918124 0.4537838
+Rap_25-DMSO        -17.0871347 -24.516110  -9.65815974 0.0000000
+WT-DMSO              1.7533445  -5.171743   8.67843185 0.9893277
+Rap_10-Rap_0.1      -5.1323529 -12.968174   2.70346854 0.4557857
+Rap_25-Rap_0.1     -17.4151398 -25.349602  -9.48067768 0.0000000
+WT-Rap_0.1           1.4253394  -6.039435   8.89011367 0.9977132
+Rap_25-Rap_10      -12.2827869 -20.333644  -4.23192988 0.0001568
+WT-Rap_10            6.5576923  -1.030685  14.14606924 0.1414197
+WT-Rap_25           18.8404792  11.150287  26.53067136 0.0000000</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCmBgYHtyfQpBbGxEYXRhIDwtIHJlYWQuY3N2KCIuLi9EYXRhL0VnZ0NvdW50c0QxRDdfUjFSNy4yLmNzdiIpCmBgYAoKYGBge3J9CkFsbERhdGEgPC0gQWxsRGF0YSAlPiUgc2VsZWN0KENvbmRpdGlvbiwgUmVwZWF0LCBEYXksIEVnZ0NvdW50LCBGaWxlTmFtZSApIApgYGAKCmBgYHtyfQpBbGxEYXRhJHdlbGwgPC0gc3RyX3N1YihBbGxEYXRhJEZpbGVOYW1lLCA2LCA3KQpBbGxEYXRhJHdlbGwgPC0gc3RyX3JlbW92ZShBbGxEYXRhJHdlbGwsICJfIikKQWxsRGF0YSR3ZWxsIDwtIGFzLm51bWVyaWMoQWxsRGF0YSR3ZWxsKQpgYGAKCmBgYHtyfQpBbGxEYXRhJHJvdzEgPC0gaWZlbHNlKEFsbERhdGEkd2VsbCA8IDksIDEsIDApCkFsbERhdGEkcm93MiA8LSBpZmVsc2UoQWxsRGF0YSR3ZWxsID4gOCAmIEFsbERhdGEkd2VsbCA8IDE3LCAyLCAwKQpBbGxEYXRhJHJvdzMgPC0gaWZlbHNlKEFsbERhdGEkd2VsbCA+IDE2ICYgQWxsRGF0YSR3ZWxsIDwgMjUsIDMsIDApCkFsbERhdGEkcm93NCA8LSBpZmVsc2UoQWxsRGF0YSR3ZWxsID4gMjQgJiBBbGxEYXRhJHdlbGwgPCAzMywgNCwgMCkKQWxsRGF0YSRyb3c1IDwtIGlmZWxzZShBbGxEYXRhJHdlbGwgPiAzMiAmIEFsbERhdGEkd2VsbCA8IDQxLCA1LCAwKQpBbGxEYXRhJHJvdzYgPC0gaWZlbHNlKEFsbERhdGEkd2VsbCA+IDQwICYgQWxsRGF0YSR3ZWxsIDwgNDksIDYsIDApCmBgYAoKYGBge3J9CkFsbERhdGEgPC0gQWxsRGF0YSAlPiUgcm93d2lzZSgpICU+JSBtdXRhdGUocm93ID0gc3VtKHJvdzEsIHJvdzIsIHJvdzMsIHJvdzQsIHJvdzUsIHJvdzYpKQpgYGAKCmBgYHtyfQpBbGxEYXRhIDwtIEFsbERhdGEgJT4lIHNlbGVjdChDb25kaXRpb24sIFJlcGVhdCwgRGF5LCBFZ2dDb3VudCwgRmlsZU5hbWUsIHJvdyApIApgYGAKCmBgYHtyfQpBbGxEYXRhLmF2ZXJhZ2UgPC0gQWxsRGF0YSAlPiUgZ3JvdXBfYnkoQ29uZGl0aW9uLCBSZXBlYXQsIERheSwgcm93KSAlPiUgc3VtbWFyaXNlKEVnZ3MgPSBtZWFuKEVnZ0NvdW50KSkKYGBgCgpgYGB7cn0KYW5vdmEuMSA8LSBBbGxEYXRhICU+JSBmaWx0ZXIoRGF5ID09ICJEMSIpICU+JSBhb3YoZGF0YSA9IC4sIEVnZ0NvdW50IH4gQ29uZGl0aW9uKQpzdW1tYXJ5KGFub3ZhLjEpClR1a2V5SFNEKGFub3ZhLjEpCmBgYAoKYGBge3J9CmFub3ZhLjMgPC0gQWxsRGF0YSAlPiUgZmlsdGVyKERheSA9PSAiRDMiKSAlPiUgYW92KGRhdGEgPSAuLCBFZ2dDb3VudCB+IENvbmRpdGlvbikKc3VtbWFyeShhbm92YS4zKQpUdWtleUhTRChhbm92YS4zKQpgYGAKCmBgYHtyfQphbm92YS43IDwtIEFsbERhdGEgJT4lIGZpbHRlcihEYXkgPT0gIkQ3IikgJT4lIGFvdihkYXRhID0gLiwgRWdnQ291bnQgfiBDb25kaXRpb24pCnN1bW1hcnkoYW5vdmEuNykKVHVrZXlIU0QoYW5vdmEuNykKYGBgCg==</div>
 
 
 
@@ -1894,7 +2105,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("Figure6F.Rmd");
+  window.initializeSourceEmbed("ANOVA.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
