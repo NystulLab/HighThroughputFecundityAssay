@@ -5,11 +5,7 @@ output: html_notebook
 
 ```{r}
 library(tidyverse)
-library(stringr)
-library(ggpubr)
-library(ggbeeswarm)
 library(ggprism)
-library(ggpubr)
 ```
 
 ```{r}
@@ -29,41 +25,27 @@ FoodTypes4$Repeat = 4
 FoodTypes = rbind(FoodTypes1, FoodTypes2, FoodTypes3, FoodTypes4)
 ```
 
-
-```{r}
-FoodTypes.average <- FoodTypes %>% group_by (Condition, Repeat, Day, row) %>%  summarise(Eggs = mean(Value))
-```
-
-```{r}
-FoodTypes.average <- FoodTypes.average %>% filter(Day == "D1" | Day == "D3")
-```
-
-
 ```{r}
 level_order <- c('Molasses', 'BDSC', 'Grape Juice')
 
-FoodTypes.average$Condition <- str_trim(FoodTypes.average$Condition)
-FoodTypes.average$Condition <- factor(FoodTypes.average$Condition, levels = level_order)
+FoodTypes$Condition <- str_trim(FoodTypes$Condition)
+FoodTypes$Condition <- factor(FoodTypes$Condition, levels = level_order)
 
-ggplot(data = FoodTypes.average, aes(x = Condition, y = Eggs, fill = Day)) + 
-  geom_boxplot() +
-  geom_point(position = position_dodge(width = 0.75)) +
+ggplot(data = FoodTypes, aes(x = Condition, y = Value, fill = Day)) + 
+  geom_boxplot(outlier.size = 0.3) +
   theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
-  xlab("Food Conditions") +
-  ylab("Average Amount of Eggs Laid") +
+  xlab("Media type") +
+  ylab("Number of eggs per well") +
   theme (
-    axis.text = element_text(size = 20),
-    axis.title = element_text(size = 20),
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold")
   ) +
+  scale_y_continuous(limits = c(0,150))
   
 
-ggsave("../Results/Figure1.pdf")
+ggsave("../Results/Figure1.pdf", width = 110, height = 75, units = "mm")
 ```
 
-```{r}
-FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "Molasses") %>% t.test(Value ~ Day, data = .)
-FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "Grape Juice") %>% t.test(Value ~ Day, data = .)
-FoodTypes %>% filter((Day == "D1" | Day == "D3") & Condition == "BDSC") %>% t.test(Value ~ Day, data = .)
-```
 

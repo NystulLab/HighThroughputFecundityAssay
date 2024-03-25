@@ -18,7 +18,7 @@ DB <- AllData %>% filter(Condition == "DMSO" | Condition == "Bendiocarb_0.1" | C
 DR$Condition <- factor(DR$Condition, levels = c('DMSO', 'Rap_0.1', 'Rap_10', 'Rap_25'))
 DR$Day <- factor(DR$Day, levels = c("D1", "D3", "D7"))
 ggplot(data = DR, aes(x = Day, y = EggCount, fill = Condition)) + 
-  geom_boxplot() +
+  geom_boxplot(outlier.size = 0.3) +
   theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
   ylab("Average Amount of Eggs Laid") +
@@ -33,7 +33,7 @@ DB$Condition <- factor(DB$Condition, levels = c('DMSO', 'Bendiocarb_0.1', 'Bendi
 DB$Day <- factor(DB$Day, levels = c("D1", "D3", "D7"))
 
 ggplot(data = DB, aes(x = Day, y = EggCount, fill = Condition)) + 
-  geom_boxplot() +
+  geom_boxplot(outlier.size = 0.3) +
   theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
   ylab("Average Amount of Eggs Laid") +
@@ -63,3 +63,4 @@ attach(AllData_7)
 pairwise.t.test(EggCount, Condition, p.adj = "bonf")
 detach(AllData_7)
 ```
+

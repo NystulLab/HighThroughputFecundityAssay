@@ -1,0 +1,61 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(ggprism)
+```
+
+```{r}
+MixedAlt <- read.csv("../Data/WTMergedData_MixedWT_NewWT.csv")
+AltTx <- read.csv("../Data/AlternatingTimecourse.csv")
+```
+
+```{r}
+MixedAlt <- MixedAlt %>% select(Condition, Repeat, Day, EggCounts, FileName ) 
+AltTx <- AltTx %>% select(Condition, Repeat, Day, EggCount, FileName )
+```
+
+```{r}
+ggplot(data = MixedAlt, aes(x = Condition, y = EggCounts, fill = Day)) + 
+  geom_boxplot(outlier.size = 0.3) +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
+  xlab("") +
+  ylab("Number of eggs per well") +
+  theme (
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold"),
+    legend.position = c(0.9, 0.9)
+  ) +
+  scale_x_discrete(labels = c("Mixed", "Alternating")) +
+  scale_y_continuous(limits = c(0,150))
+
+ggsave("../Results/Figure2D.pdf", width = 60, height = 55, units = "mm")
+```
+
+```{r}
+AltTx$Day <- factor(AltTx$Day, levels = c("D1", "D3", "D7"))
+
+ggplot(AltTx, aes(x = Day, y = EggCount, fill = Day)) +
+  geom_boxplot(outlier.size = 0.3) +
+  theme_prism(base_size = 10) +
+  scale_fill_brewer(palette = "Blues") +
+  xlab("") +
+  ylab("Number of eggs per well") +
+  theme (
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold"),
+    legend.position = c(0.9, 0.9)
+  ) +
+  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7")) +
+  scale_y_continuous(limits = c(0,150))
+
+ggsave("../Results/Figure2E.pdf", width = 60, height = 55, units = "mm")
+
+CurrentData2.average %>% filter(Condition == 'WT') %>% group_by(Day) %>% summarise(MeanEggs = mean(Eggs), MedianEggs = median(Eggs))
+```
