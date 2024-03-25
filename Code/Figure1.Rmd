@@ -47,5 +47,3 @@ ggplot(data = FoodTypes, aes(x = Condition, y = Value, fill = Day)) +
 
 ggsave("../Results/Figure1.pdf", width = 110, height = 75, units = "mm")
 ```
-
-
