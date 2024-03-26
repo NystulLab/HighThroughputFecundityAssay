@@ -18,14 +18,22 @@ DB <- AllData %>% filter(Condition == "DMSO" | Condition == "Bendiocarb_0.1" | C
 DR$Condition <- factor(DR$Condition, levels = c('DMSO', 'Rap_0.1', 'Rap_10', 'Rap_25'))
 DR$Day <- factor(DR$Day, levels = c("D1", "D3", "D7"))
 ggplot(data = DR, aes(x = Day, y = EggCount, fill = Condition)) + 
-  geom_boxplot(outlier.size = 0.3) +
+  geom_boxplot(outlier.size = 0.3, lwd = 0.3) +
   theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
-  ylab("Average Amount of Eggs Laid") +
-  scale_y_continuous(limits = c(0,100)) +
-  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7"))
+  xlab("") +
+  ylab("Number of eggs per well") +
+  theme (
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold"),
+    legend.position = c(0.9, 0.8)
+  ) +
+  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7")) +
+  scale_y_continuous(limits = c(0,150))
 
-ggsave("../Results/Fig6E_Rapamycin.pdf")
+ggsave("../Results/Figure6E.pdf", width = 85, height = 65, units = "mm")
+
 ```
 
 ```{r}
@@ -33,14 +41,21 @@ DB$Condition <- factor(DB$Condition, levels = c('DMSO', 'Bendiocarb_0.1', 'Bendi
 DB$Day <- factor(DB$Day, levels = c("D1", "D3", "D7"))
 
 ggplot(data = DB, aes(x = Day, y = EggCount, fill = Condition)) + 
-  geom_boxplot(outlier.size = 0.3) +
+  geom_boxplot(outlier.size = 0.3, lwd = 0.3) +
   theme_prism(base_size = 10) +
   scale_fill_brewer(palette = "Blues") +
-  ylab("Average Amount of Eggs Laid") +
-  scale_y_continuous(limits = c(0,100)) +
-  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7"))
+  xlab("") +
+  ylab("Number of eggs per well") +
+  theme (
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold"),
+    legend.position = c(0.9, 0.8)
+  ) +
+  scale_x_discrete(labels = c("Day 1", "Day 3", "Day 7")) +
+  scale_y_continuous(limits = c(0,150))
 
-ggsave("../Results/Fig6F_Bendiocarb.pdf")
+ggsave("../Results/Figure6F.pdf", width = 85, height = 65, units = "mm")
 ```
 
 ```{r}
