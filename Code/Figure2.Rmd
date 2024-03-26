@@ -59,3 +59,8 @@ ggsave("../Results/Figure2E.pdf", width = 60, height = 55, units = "mm")
 
 CurrentData2.average %>% filter(Condition == 'WT') %>% group_by(Day) %>% summarise(MeanEggs = mean(Eggs), MedianEggs = median(Eggs))
 ```
+
+```{r}
+AltTx %>% group_by(Day) %>% summarise(mean = mean(EggCount), median = median(EggCount))
+```
+
