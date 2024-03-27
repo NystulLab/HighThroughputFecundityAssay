@@ -79,3 +79,172 @@ pairwise.t.test(EggCount, Condition, p.adj = "bonf")
 detach(AllData_7)
 ```
 
+
+
+```{r, message=FALSE}
+DataSampleD3_4 <- function(AllData) {
+  set.seed(200)
+  Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 4)
+  Subset <- Subset %>% filter(Day == "D3")
+  attach(Subset)
+  pvals <- (pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+  pvals <- as.data.frame(pvals)
+  pvals <- pvals %>% rownames_to_column(var = "Condition")
+  detach(Subset)
+  for(x in 1:99) {
+    set.seed(x+100)
+    Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 4)
+    Subset <- Subset %>% filter(Day == "D3")
+    attach(Subset)
+    temppvals <- (p = pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+    temppvals <- as.data.frame(temppvals)
+    temppvals <- temppvals %>% rownames_to_column(var = "Condition")
+    detach(Subset)
+    pvals <- rbind(pvals, temppvals)
+  } 
+   return(pvals)
+}
+
+pvalsD3_4 <- DataSampleD3_4(AllData)
+```
+
+```{r}
+pvalsD3_4  <- pvalsD3_4  %>% pivot_longer(!Condition, names_to = "Comparison", values_to = "p")
+pvalsD3_4  <- pvalsD3_4  %>% filter(!is.na(p))
+pvalsD3_4 $CondComp <- paste(pvalsD3_4 $Condition, pvalsD3_4 $Comparison)
+pvalsD3_4 $DMSO <- grepl("DMSO", pvalsD3_4 $CondComp)
+pvalsD3_4  <- pvalsD3_4  %>% filter(DMSO == TRUE)
+```
+
+```{r}
+ggplot(pvalsD3_4 , aes(x = p, y = CondComp))  +
+  geom_boxplot(outlier.size = 0.3, fill = "lightblue") +
+  theme_prism(base_size = 10) +
+  scale_x_continuous(breaks = c(0, 0.05, 0.25, 0.5, 0.75, 1)) +
+  xlab("p-values") +
+  ylab("")
+
+ggsave("../Results/pvalsD3_4.pdf", width = 7, height = 3.5, units = "in")
+```
+
+```{r, message=FALSE}
+DataSampleD7_4 <- function(AllData) {
+  set.seed(200)
+  Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 4)
+  Subset <- Subset %>% filter(Day == "D7")
+  attach(Subset)
+  pvals <- (pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+  pvals <- as.data.frame(pvals)
+  pvals <- pvals %>% rownames_to_column(var = "Condition")
+  detach(Subset)
+  for(x in 1:99) {
+    set.seed(x+100)
+    Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 4)
+    Subset <- Subset %>% filter(Day == "D7")
+    attach(Subset)
+    temppvals <- (p = pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+    temppvals <- as.data.frame(temppvals)
+    temppvals <- temppvals %>% rownames_to_column(var = "Condition")
+    detach(Subset)
+    pvals <- rbind(pvals, temppvals)
+  } 
+   return(pvals)
+}
+
+pvalsD7_4 <- DataSampleD7_4(AllData)
+```
+
+```{r}
+pvalsD7_4  <- pvalsD7_4  %>% pivot_longer(!Condition, names_to = "Comparison", values_to = "p")
+pvalsD7_4  <- pvalsD7_4  %>% filter(!is.na(p))
+pvalsD7_4 $CondComp <- paste(pvalsD7_4 $Condition, pvalsD7_4 $Comparison)
+pvalsD7_4 $DMSO <- grepl("DMSO", pvalsD7_4 $CondComp)
+pvalsD7_4  <- pvalsD7_4  %>% filter(DMSO == TRUE)
+```
+
+```{r}
+ggplot(pvalsD7_4, aes(x = p, y = CondComp))  +
+  geom_boxplot(outlier.size = 0.3, fill = "lightblue") +
+  theme_prism(base_size = 10) +
+  scale_x_continuous(breaks = c(0, 0.05, 0.25, 0.5, 0.75, 1)) +
+  xlab("p-values") +
+  ylab("")
+
+ggsave("../Results/pvalsD7_4.pdf", width = 7, height = 3.5, units = "in")
+```
+
+
+```{r}
+pvalsD3$count <- "a"
+pvalsD3_4$count <- "b"
+pvalsD3_all <- rbind(pvalsD3, pvalsD3_4)
+```
+
+```{r}
+ggplot(pvalsD3_all, aes(x = p, y = CondComp, fill = count))  +
+  geom_boxplot(outlier.size = 0.3) +
+  theme_prism(base_size = 10) +
+  scale_x_continuous(breaks = c(0, 0.05, 0.25, 0.5, 0.75, 1)) +
+  xlab("p-values") +
+  ylab("")
+```
+
+```{r, message=FALSE}
+DataSampleD3_24 <- function(AllData) {
+  set.seed(300)
+  Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 16)
+  Subset <- Subset %>% filter(Day == "D3")
+  attach(Subset)
+  pvals <- (pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+  pvals <- as.data.frame(pvals)
+  pvals <- pvals %>% rownames_to_column(var = "Condition")
+  detach(Subset)
+  for(x in 1:99) {
+    set.seed(x+200)
+    Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., 16)
+    Subset <- Subset %>% filter(Day == "D3")
+    attach(Subset)
+    temppvals <- (p = pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
+    temppvals <- as.data.frame(temppvals)
+    temppvals <- temppvals %>% rownames_to_column(var = "Condition")
+    detach(Subset)
+    pvals <- rbind(pvals, temppvals)
+  } 
+   return(pvals)
+}
+
+pvalsD3_24 <- DataSampleD3_24(AllData)
+```
+
+```{r}
+pvalsD3_24  <- pvalsD3_24  %>% pivot_longer(!Condition, names_to = "Comparison", values_to = "p")
+pvalsD3_24  <- pvalsD3_24  %>% filter(!is.na(p))
+pvalsD3_24 $CondComp <- paste(pvalsD3_24 $Condition, pvalsD3_24 $Comparison)
+pvalsD3_24 $DMSO <- grepl("DMSO", pvalsD3_24 $CondComp)
+pvalsD3_24  <- pvalsD3_24  %>% filter(DMSO == TRUE)
+```
+
+```{r}
+pvalsD3$count <- "b"
+pvalsD3_4$count <- "a"
+pvalsD3_24$count <- "c"
+pvalsD3_all <- rbind(pvalsD3_4, pvalsD3, pvalsD3_24)
+```
+
+```{r}
+ggplot(pvalsD3_all, aes(x = p, y = CondComp, fill = count))  +
+  geom_boxplot(outlier.size = 0.3) +
+  theme_prism(base_size = 10) +
+  scale_x_continuous(breaks = c(0, 0.05, 0.25, 0.5, 0.75, 1)) +
+  xlab("p-values") +
+  ylab("")
+```
+
+```{r}
+pvalsD3_4 %>% group_by(CondComp) %>% summarise(median = median(p))
+```
+
+```{r}
+hist(pvalsD3_4$p, breaks = c(0, 0.05, 0.25, 0.5, 0.75, 1))
+```
+
