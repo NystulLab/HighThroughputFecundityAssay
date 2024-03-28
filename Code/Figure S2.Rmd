@@ -106,6 +106,11 @@ ggplot(pvalsD3_all, aes(x = p, y = CondComp, fill = RowCount))  +
 ggsave("../Results/pvalsD3.pdf", width = 7, height = 3.5, units = "in")
 ```
 
+```{r}
+#Calculate percent of p-values below 0.05
+pvalsD3_signif <- pvalsD3_all %>% filter(p < 0.05) %>% group_by(CondComp, RowCount) %>% summarise(N = n())
+```
+
 ```{r, message=FALSE}
 pvalsD7_4 <- DataSample(AllData, 4, "D7")
 pvalsD7_8 <- DataSample(AllData, 8, "D7")
