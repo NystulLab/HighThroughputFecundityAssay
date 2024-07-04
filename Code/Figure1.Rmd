@@ -47,3 +47,15 @@ ggplot(data = FoodTypes, aes(x = Condition, y = Value, fill = Day)) +
 
 ggsave("../Results/Figure1.pdf", width = 110, height = 75, units = "mm")
 ```
+
+```{r}
+compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "Grape Juice",], method = "t.test", p.adjust.method = "bonf")
+```
+
+```{r}
+compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "Molasses",], method = "t.test", p.adjust.method = "bonf")
+```
+
+```{r}
+compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "BDSC",], method = "t.test", p.adjust.method = "bonf")
+```

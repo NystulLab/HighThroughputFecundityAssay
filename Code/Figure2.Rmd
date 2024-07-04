@@ -14,8 +14,8 @@ AltTx <- read.csv("../Data/AlternatingTimecourse.csv")
 ```
 
 ```{r}
-MixedAlt <- MixedAlt %>% select(Condition, Repeat, Day, EggCounts, FileName ) 
-AltTx <- AltTx %>% select(Condition, Repeat, Day, EggCount, FileName )
+MixedAlt <- MixedAlt %>% select(Condition, Repeat, Day, EggCounts, FileName) 
+AltTx <- AltTx %>% select(Condition, Repeat, Day, EggCount, FileName)
 ```
 
 ```{r}
@@ -56,11 +56,16 @@ ggplot(AltTx, aes(x = Day, y = EggCount, fill = Day)) +
   scale_y_continuous(limits = c(0,150))
 
 ggsave("../Results/Figure2E.pdf", width = 60, height = 55, units = "mm")
-
-CurrentData2.average %>% filter(Condition == 'WT') %>% group_by(Day) %>% summarise(MeanEggs = mean(Eggs), MedianEggs = median(Eggs))
 ```
 
 ```{r}
 AltTx %>% group_by(Day) %>% summarise(mean = mean(EggCount), median = median(EggCount))
 ```
 
+```{r}
+compare_means(EggCounts ~ Day, data = MixedAlt, group.by = "Condition", method = "t.test", p.adjust.method = "bonf")
+```
+
+```{r}
+compare_means(EggCount ~ Day, data = AltTx, method = "t.test", p.adjust.method = "bonf")
+```
