@@ -8,7 +8,7 @@
 
 ## RoboCam
 ### Contents
-'RoboCam" : Python scripts used to operate the RoboCam
+`RoboCam` : Python scripts used to operate the RoboCam
 
 ## Image segmentation to identify eggs
 ### Contents
