@@ -60,3 +60,8 @@ compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "Molasses",],
 ```{r}
 compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "BDSC",], method = "t.test", p.adjust.method = "bonf")
 ```
+
+```{r}
+sd(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])
+```
+

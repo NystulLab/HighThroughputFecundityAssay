@@ -70,3 +70,8 @@ compare_means(EggCounts ~ Day, data = MixedAlt, group.by = "Condition", method =
 ```{r}
 compare_means(EggCount ~ Day, data = AltTx, method = "t.test", p.adjust.method = "bonf")
 ```
+
+```{r}
+sd(AltTx[AltTx$Day == "D1", "EggCount"])
+```
+
