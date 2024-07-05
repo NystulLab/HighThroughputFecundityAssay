@@ -62,6 +62,7 @@ compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "BDSC",], met
 ```
 
 ```{r}
-sd(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])
+#calculate the coefficient of variation
+sd(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])/mean(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])
 ```
 

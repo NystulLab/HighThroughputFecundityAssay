@@ -71,7 +71,10 @@ compare_means(EggCounts ~ Day, data = MixedAlt, group.by = "Condition", method =
 compare_means(EggCount ~ Day, data = AltTx, method = "t.test", p.adjust.method = "bonf")
 ```
 
+
 ```{r}
-sd(AltTx[AltTx$Day == "D1", "EggCount"])
+#calculate the coefficients of variation
+sd(MixedAlt[MixedAlt$Condition == "MixedGrapeJuice" & MixedAlt$Day == "D1", "EggCounts"])/mean(MixedAlt[MixedAlt$Condition == "MixedGrapeJuice" & MixedAlt$Day == "D1", "EggCounts"])
+sd(AltTx[AltTx$Day == "D1", "EggCount"])/mean(AltTx[AltTx$Day == "D1", "EggCount"])
 ```
 
