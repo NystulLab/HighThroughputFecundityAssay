@@ -1,0 +1,59 @@
+---
+title: "Comparing the rate of fecundity among different WT strains"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(ggpubr)
+library(ggbeeswarm)
+library(ggprism)
+```
+
+```{r}
+WTstrains <- read.csv("../HighThroughputFecundityAssay/Data/DifferentWTStrains.csv")
+```
+
+```{r}
+WTstrains <- WTstrains %>% select(Condition, Repeat, Day, EggCount, FileName)
+```
+
+```{r}
+WTstrains$well <- str_sub(WTstrains$FileName, 6, 7)
+WTstrains$well <- str_remove(WTstrains$well, "_")
+WTstrains$well <- as.numeric(WTstrains$well)
+```
+
+```{r}
+WTstrains$row1 <- ifelse(WTstrains$well < 9, 1, 0)
+WTstrains$row2 <- ifelse(WTstrains$well > 8 & WTstrains$well < 17, 2, 0)
+WTstrains$row3 <- ifelse(WTstrains$well > 16 & WTstrains$well < 25, 3, 0)
+WTstrains$row4 <- ifelse(WTstrains$well > 24 & WTstrains$well < 33, 4, 0)
+WTstrains$row5 <- ifelse(WTstrains$well > 32 & WTstrains$well < 41, 5, 0)
+WTstrains$row6 <- ifelse(WTstrains$well > 40 & WTstrains$well < 49, 6, 0)
+```
+
+```{r}
+WTstrains <- WTstrains %>% rowwise() %>% mutate(row = sum(row1, row2, row3, row4, row5, row6))
+
+```
+
+```{r}
+WTstrains <- WTstrains %>% select(Condition, Repeat, Day, EggCount, FileName, row)
+```
+
+```{r}
+level_order <- c('w1118', 'OregonR', 'CantonS')
+
+WTstrains$Condition <- factor(WTstrains$Condition, levels = level_order)
+ggplot(data = WTstrains, aes(x = Condition, y = EggCount, fill = Day)) + 
+geom_boxplot() +
+geom_point(position = position_dodge(width = 0.75)) +
+theme_prism(base_size = 10) +
+scale_fill_brewer(palette = "Blues") +
+  xlab("Wildtype Strains") +
+  ylab("Number of Eggs Laid") 
+
+```
+
