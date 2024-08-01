@@ -1,0 +1,39 @@
+---
+title: "1% agarose concentration - rate of fecundity"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(ggpubr)
+library(ggbeeswarm)
+library(ggprism)
+```
+
+```{r}
+Oneperc_manual <- read.csv("../HighThroughputFecundityAssay/Data/1percent_manualcounts.csv")
+```
+
+```{r}
+Oneperc_manual <- Oneperc_manual %>% select(Condition, Repeat, Day, EggCounts, FileName)
+```
+
+```{r}
+level_order <- c('1percent_manual')
+
+Oneperc_manual$Condition <- factor(Oneperc_manual$Condition, levels = level_order)
+ggplot(data = Oneperc_manual, aes(x = Condition, y = EggCounts, fill = Day)) + 
+geom_boxplot() +
+geom_point(position = position_dodge(width = 0.75)) +
+theme_prism(base_size = 10) +
+scale_fill_brewer(palette = "Blues") +
+ xlab("Agarose Concentration") +
+ylab("Number of Eggs Laid") +
+scale_x_discrete(limits=level_order, labels=c('1%'))
+
+```
+
+
+
+
