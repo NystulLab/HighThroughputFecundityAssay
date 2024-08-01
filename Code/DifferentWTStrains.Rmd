@@ -12,7 +12,7 @@ library(ggprism)
 ```
 
 ```{r}
-WTstrains <- read.csv("../HighThroughputFecundityAssay/Data/DifferentWTStrains.csv")
+WTstrains <- read.csv("../Data/DifferentWTStrains.csv")
 ```
 
 ```{r}
@@ -49,11 +49,10 @@ level_order <- c('w1118', 'OregonR', 'CantonS')
 WTstrains$Condition <- factor(WTstrains$Condition, levels = level_order)
 ggplot(data = WTstrains, aes(x = Condition, y = EggCount, fill = Day)) + 
 geom_boxplot() +
-geom_point(position = position_dodge(width = 0.75)) +
 theme_prism(base_size = 10) +
 scale_fill_brewer(palette = "Blues") +
   xlab("Wildtype Strains") +
-  ylab("Number of Eggs Laid") 
-
+  ylab("Number of Eggs Laid") +
+  scale_y_continuous(limits = c(0,100))
 ```
 
