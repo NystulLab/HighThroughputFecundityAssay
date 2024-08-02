@@ -24,6 +24,7 @@ FoodTypes2$Repeat = 2
 FoodTypes3$Repeat = 3
 FoodTypes4$Repeat = 4
 FoodTypes = rbind(FoodTypes1, FoodTypes2, FoodTypes3, FoodTypes4)
+rm(FoodTypes1, FoodTypes2, FoodTypes3, FoodTypes4)
 ```
 
 ```{r}
