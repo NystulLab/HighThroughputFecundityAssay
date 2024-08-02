@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(ggprism)
+```
+
+```{r}
+one_percent_model <- read.csv("../Data/1percent_flyModel2_counts.csv")
+one_percent_manual <- read.csv("../Data/1percent_manualcounts.csv")
+
+one_percent <- one_percent_manual %>% full_join(one_percent_model, join_by("FileName"))
+```
+
+
+```{r}
+#versatile flow model
+ggplot(data = one_percent, aes(x = Manual, y = Versatile_fluo)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_prism(base_size = 10) +
+  xlab("Manual counts") +
+  ylab("Model counts") +
+  scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) + 
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
+
+ggsave("../Results/versatile_fluo.pdf")
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
