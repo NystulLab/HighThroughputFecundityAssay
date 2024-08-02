@@ -47,11 +47,17 @@ WTstrains <- WTstrains %>% select(Condition, Repeat, Day, EggCount, FileName, ro
 level_order <- c('w1118', 'OregonR', 'CantonS')
 
 WTstrains$Condition <- factor(WTstrains$Condition, levels = level_order)
-ggplot(data = WTstrains, aes(x = Condition, y = EggCount, fill = Day)) + 
+ggplot(data = WTstrains, aes(x = Day, y = EggCount, fill = Condition)) + 
 geom_boxplot() +
 theme_prism(base_size = 10) +
-scale_fill_brewer(palette = "Blues") +
-  xlab("Wildtype Strains") +
+theme(
+    axis.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 8, face = "bold"),
+    legend.position = c(0.9, 0.8)
+  ) +
+  scale_fill_brewer(palette = "Blues") +
+  xlab("") +
   ylab("Number of Eggs Laid") +
   scale_y_continuous(limits = c(0,100))
 ```
