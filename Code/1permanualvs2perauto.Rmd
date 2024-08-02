@@ -12,7 +12,7 @@ library(ggprism)
 ```
 
 ```{r}
-manualauto <- read.csv("../HighThroughputFecundityAssay/Data/1permanualvs2perauto.csv")
+manualauto <- read.csv("../Data/1permanualvs2perauto.csv")
 ```
 
 ```{r}
@@ -21,14 +21,13 @@ manualauto <- manualauto %>% select(Condition, Repeat, Day, EggCounts, FileName)
 
 #Graph showing different agarose concentrations with different model used (1% for hand counting and 2% using flymodel2 tool)
 ```{r}
-ggplot(data = manualauto, aes(x = Condition, y = EggCounts, fill = Day)) + 
-geom_boxplot() +
-geom_point(position = position_dodge(width = 0.75)) +
-theme_prism(base_size = 10) +
-scale_fill_brewer(palette = "Blues") +
- xlab("Agarose Concentration + Model used") +
-ylab("Number of Eggs Laid") 
-#scale_x_discrete(limits=level_order, labels=c('1%'))
+ggplot(data = manualauto, aes(x = Day, y = EggCounts, fill = Condition)) + 
+  geom_boxplot() +
+  theme_prism(base_size = 10) +
+  theme(legend.text = element_text(size = 10, face = "bold"), legend.position = c(0.8,0.8)) +
+  scale_fill_brewer(palette = "Blues", labels = c("1 percent", "2 percent")) +
+  xlab("Agarose Concentration") +
+  ylab("Number of Eggs Laid") 
 ```
 
 
