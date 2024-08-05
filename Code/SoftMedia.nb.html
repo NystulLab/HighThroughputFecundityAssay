@@ -1754,20 +1754,37 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGdncHJpc20pXG5gYGAifQ== -->
 <pre class="r"><code>library(tidyverse)
-</code></pre>
+library(ggprism)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogcGFja2FnZSDigJh0aWR5cuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuMi4zV2FybmluZzogcGFja2FnZSDigJhyZWFkcuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuMi4zV2FybmluZzogcGFja2FnZSDigJhkcGx5cuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuMi4zV2FybmluZzogcGFja2FnZSDigJhzdHJpbmdy4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gNC4yLjNcbiJ9 -->
-<pre><code>Warning: package ‘tidyr’ was built under R version 4.2.3Warning: package ‘readr’ was built under R version 4.2.3Warning: package ‘dplyr’ was built under R version 4.2.3Warning: package ‘stringr’ was built under R version 4.2.3</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW1nX2NvdW50IDwtIGltZ19jb3VudCAlPiUgcmVuYW1lKFwiTW9kZWxcIiA9IFwiRWdnQ291bnRzLnhcIiwgXCJNYW51YWxcIiA9IFwiRWdnQ291bnRzLnlcIilcblxuYGBgIn0= -->
-<pre class="r"><code>img_count &lt;- img_count %&gt;% rename(&quot;Model&quot; = &quot;EggCounts.x&quot;, &quot;Manual&quot; = &quot;EggCounts.y&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRmx5TW9kZWwgPC0gcmVhZC5jc3YoXCIuLi9EYXRhLzFwZXJjZW50X2ZseU1vZGVsMl9jb3VudHMuY3N2XCIpXG5NYW51YWwgPC0gcmVhZC5jc3YoXCIuLi9EYXRhLzFwZXJjZW50X21hbnVhbGNvdW50cy5jc3ZcIilcblxuaW1nX2NvdW50IDwtIEZseU1vZGVsICU+JSBpbm5lcl9qb2luKE1hbnVhbCwgam9pbl9ieShcIkZpbGVOYW1lXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>FlyModel &lt;- read.csv(&quot;../Data/1percent_flyModel2_counts.csv&quot;)
+Manual &lt;- read.csv(&quot;../Data/1percent_manualcounts.csv&quot;)
+
+img_count &lt;- FlyModel %&gt;% inner_join(Manual, join_by(&quot;FileName&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW1nX2NvdW50IDwtIGltZ19jb3VudCAlPiUgc2VsZWN0KEVnZ0NvdW50cy54LCBFZ2dDb3VudHMueSlcbmBgYCJ9 -->
+<pre class="r"><code>img_count &lt;- img_count %&gt;% select(EggCounts.x, EggCounts.y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
+<pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW1nX2NvdW50IDwtIGltZ19jb3VudCAlPiUgcmVuYW1lKFwiTW9kZWxcIiA9IFwiRWdnQ291bnRzLnhcIiwgXCJNYW51YWxcIiA9IFwiRWdnQ291bnRzLnlcIilcbmBgYCJ9 -->
+<pre class="r"><code>img_count &lt;- img_count %&gt;% rename(&quot;Model&quot; = &quot;EggCounts.x&quot;, &quot;Manual&quot; = &quot;EggCounts.y&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhpc3RzKGNhY2hlS2V5LCB3aGVyZSA9IC5ycy5Xb3JraW5nRGF0YUVudiwgaW5oZXJpdHMgPSBGQUxTRSkgOiBcbiAgaW52YWxpZCBmaXJzdCBhcmd1bWVudFxuRXJyb3IgaW4gYXNzaWduKGNhY2hlS2V5LCBmcmFtZSwgLnJzLkNhY2hlZERhdGFFbnYpIDogXG4gIGF0dGVtcHQgdG8gdXNlIHplcm8tbGVuZ3RoIHZhcmlhYmxlIG5hbWVcbiJ9 -->
 <pre><code>Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
@@ -1805,9 +1822,8 @@ ggsave(&quot;../Results/SoftMedia.pdf&quot;)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsbShNb2RlbCB+IE1hbnVhbCwgZGF0YSA9IGltZ19jb3VudCkpXG5cbmBgYCJ9 -->
-<pre class="r"><code>summary(lm(Model ~ Manual, data = img_count))
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShsbShNb2RlbCB+IE1hbnVhbCwgZGF0YSA9IGltZ19jb3VudCkpXG5gYGAifQ== -->
+<pre class="r"><code>summary(lm(Model ~ Manual, data = img_count))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiXG5DYWxsOlxubG0oZm9ybXVsYSA9IE1vZGVsIH4gTWFudWFsLCBkYXRhID0gaW1nX2NvdW50KVxuXG5SZXNpZHVhbHM6XG4gICAgIE1pbiAgICAgICAxUSAgIE1lZGlhbiAgICAgICAzUSAgICAgIE1heCBcbi0yMS45MTg1ICAtMi40NjgwICAgMC4xNDI3ICAgMy4yMzgxICAyMS4wODkxIFxuXG5Db2VmZmljaWVudHM6XG4gICAgICAgICAgICBFc3RpbWF0ZSBTdGQuIEVycm9yIHQgdmFsdWUgUHIoPnx0fCkgICAgXG4oSW50ZXJjZXB0KSAgMS4zOTE0MyAgICAwLjY0ODgwICAgMi4xNDUgICAwLjAzMjkgKiAgXG5NYW51YWwgICAgICAgMC44MDE1MyAgICAwLjAxNDk5ICA1My40ODQgICA8MmUtMTYgKioqXG4tLS1cblNpZ25pZi4gY29kZXM6ICAwIOKAmCoqKuKAmSAwLjAwMSDigJgqKuKAmSAwLjAxIOKAmCrigJkgMC4wNSDigJgu4oCZIDAuMSDigJgg4oCZIDFcblxuUmVzaWR1YWwgc3RhbmRhcmQgZXJyb3I6IDUuOTE3IG9uIDI2NSBkZWdyZWVzIG9mIGZyZWVkb21cbk11bHRpcGxlIFItc3F1YXJlZDogIDAuOTE1MixcdEFkanVzdGVkIFItc3F1YXJlZDogIDAuOTE0OSBcbkYtc3RhdGlzdGljOiAgMjg2MSBvbiAxIGFuZCAyNjUgREYsICBwLXZhbHVlOiA8IDIuMmUtMTZcbiJ9 -->
 <pre><code>
@@ -1830,8 +1846,47 @@ Multiple R-squared:  0.9152,    Adjusted R-squared:  0.9149
 F-statistic:  2861 on 1 and 265 DF,  p-value: &lt; 2.2e-16</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2Vzc2lvbkluZm8oKVxuYGBgIn0= -->
+<pre class="r"><code>sessionInfo()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUiB2ZXJzaW9uIDQuMi4yICgyMDIyLTEwLTMxKVxuUGxhdGZvcm06IGFhcmNoNjQtYXBwbGUtZGFyd2luMjAgKDY0LWJpdClcblJ1bm5pbmcgdW5kZXI6IG1hY09TIDE0LjQuMVxuXG5NYXRyaXggcHJvZHVjdHM6IGRlZmF1bHRcbkxBUEFDSzogL0xpYnJhcnkvRnJhbWV3b3Jrcy9SLmZyYW1ld29yay9WZXJzaW9ucy80LjItYXJtNjQvUmVzb3VyY2VzL2xpYi9saWJSbGFwYWNrLmR5bGliXG5cbmxvY2FsZTpcblsxXSBlbl9VUy5VVEYtOC9lbl9VUy5VVEYtOC9lbl9VUy5VVEYtOC9DL2VuX1VTLlVURi04L2VuX1VTLlVURi04XG5cbmF0dGFjaGVkIGJhc2UgcGFja2FnZXM6XG5bMV0gc3RhdHMgICAgIGdyYXBoaWNzICBnckRldmljZXMgdXRpbHMgICAgIGRhdGFzZXRzICBtZXRob2RzICAgYmFzZSAgICAgXG5cbm90aGVyIGF0dGFjaGVkIHBhY2thZ2VzOlxuIFsxXSBnZ2JlZXN3YXJtXzAuNy4xIGdncHVicl8wLjUuMCAgICAgZ2dwcmlzbV8xLjAuNCAgICBmb3JjYXRzXzEuMC4wICAgIHN0cmluZ3JfMS41LjEgICAgZHBseXJfMS4xLjQgICAgICBwdXJycl8xLjAuMiAgICAgIHJlYWRyXzIuMS41ICAgICAgdGlkeXJfMS4zLjEgICAgIFxuWzEwXSB0aWJibGVfMy4yLjEgICAgIGdncGxvdDJfMy40LjIgICAgdGlkeXZlcnNlXzEuMy4yIFxuXG5sb2FkZWQgdmlhIGEgbmFtZXNwYWNlIChhbmQgbm90IGF0dGFjaGVkKTpcbiBbMV0gaHR0cl8xLjQuNyAgICAgICAgICBzYXNzXzAuNC41ICAgICAgICAgIGpzb25saXRlXzEuOC44ICAgICAgc3BsaW5lc180LjIuMiAgICAgICBjYXJEYXRhXzMuMC01ICAgICAgIG1vZGVscl8wLjEuMTEgICAgICAgYnNsaWJfMC40LjIgICAgICAgICB2aXBvcl8wLjQuNSAgICAgICAgXG4gWzldIGdvb2dsZXNoZWV0czRfMS4xLjEgY2VsbHJhbmdlcl8xLjEuMCAgICB5YW1sXzIuMy43ICAgICAgICAgIHBpbGxhcl8xLjkuMCAgICAgICAgYmFja3BvcnRzXzEuNC4xICAgICBsYXR0aWNlXzAuMjAtNDUgICAgIGdsdWVfMS42LjIgICAgICAgICAgZGlnZXN0XzAuNi4zMSAgICAgIFxuWzE3XSBSQ29sb3JCcmV3ZXJfMS4xLTMgIGdnc2lnbmlmXzAuNi40ICAgICAgcnZlc3RfMS4wLjQgICAgICAgICBjb2xvcnNwYWNlXzIuMS0wICAgIGh0bWx0b29sc18wLjUuNCAgICAgTWF0cml4XzEuNS0zICAgICAgICBwa2djb25maWdfMi4wLjMgICAgIGJyb29tXzEuMC41ICAgICAgICBcblsyNV0gaGF2ZW5fMi41LjQgICAgICAgICBzY2FsZXNfMS4zLjAgICAgICAgIHR6ZGJfMC4zLjAgICAgICAgICAgdGltZWNoYW5nZV8wLjIuMCAgICBnb29nbGVkcml2ZV8yLjEuMSAgIG1nY3ZfMS44LTQxICAgICAgICAgZ2VuZXJpY3NfMC4xLjMgICAgICBmYXJ2ZXJfMi4xLjEgICAgICAgXG5bMzNdIGNhcl8zLjEtMSAgICAgICAgICAgY2FjaGVtXzEuMC42ICAgICAgICB3aXRocl8yLjUuMCAgICAgICAgIGNsaV8zLjYuMiAgICAgICAgICAgbWFncml0dHJfMi4wLjMgICAgICBjcmF5b25fMS41LjIgICAgICAgIHJlYWR4bF8xLjQuMyAgICAgICAgZXZhbHVhdGVfMC4yMCAgICAgIFxuWzQxXSBmc18xLjYuMyAgICAgICAgICAgIGZhbnNpXzEuMC40ICAgICAgICAgbmxtZV8zLjEtMTYxICAgICAgICByc3RhdGl4XzAuNy4xICAgICAgIHhtbDJfMS4zLjYgICAgICAgICAgYmVlc3dhcm1fMC40LjAgICAgICB0ZXh0c2hhcGluZ18wLjMuNiAgIHRvb2xzXzQuMi4yICAgICAgICBcbls0OV0gaG1zXzEuMS4zICAgICAgICAgICBnYXJnbGVfMS41LjIgICAgICAgIGxpZmVjeWNsZV8xLjAuMyAgICAgbXVuc2VsbF8wLjUuMCAgICAgICByZXByZXhfMi4xLjAgICAgICAgIGNvbXBpbGVyXzQuMi4yICAgICAganF1ZXJ5bGliXzAuMS40ICAgICBzeXN0ZW1mb250c18xLjAuNCAgXG5bNTddIHJsYW5nXzEuMS4zICAgICAgICAgZ3JpZF80LjIuMiAgICAgICAgICByc3R1ZGlvYXBpXzAuMTQgICAgIGxhYmVsaW5nXzAuNC4yICAgICAgcm1hcmtkb3duXzIuMjAgICAgICBndGFibGVfMC4zLjEgICAgICAgIGFiaW5kXzEuNC01ICAgICAgICAgREJJXzEuMS4zICAgICAgICAgIFxuWzY1XSBSNl8yLjUuMSAgICAgICAgICAgIGx1YnJpZGF0ZV8xLjkuMyAgICAga25pdHJfMS40MiAgICAgICAgICBmYXN0bWFwXzEuMS4wICAgICAgIHV0ZjhfMS4yLjIgICAgICAgICAgcmFnZ18xLjMuMiAgICAgICAgICBzdHJpbmdpXzEuNy4xMiAgICAgIHZjdHJzXzAuNi41ICAgICAgICBcbls3M10gZGJwbHlyXzIuNS4wICAgICAgICB0aWR5c2VsZWN0XzEuMi4xICAgIHhmdW5fMC4zNiAgICAgICAgICBcbiJ9 -->
+<pre><code>R version 4.2.2 (2022-10-31)
+Platform: aarch64-apple-darwin20 (64-bit)
+Running under: macOS 14.4.1
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3IgbWVzc2FnZSA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShnZ3ByaXNtKQpgYGAKCmBgYHtyfQpGbHlNb2RlbCA8LSByZWFkLmNzdigiLi4vRGF0YS8xcGVyY2VudF9mbHlNb2RlbDJfY291bnRzLmNzdiIpCk1hbnVhbCA8LSByZWFkLmNzdigiLi4vRGF0YS8xcGVyY2VudF9tYW51YWxjb3VudHMuY3N2IikKCmltZ19jb3VudCA8LSBGbHlNb2RlbCAlPiUgaW5uZXJfam9pbihNYW51YWwsIGpvaW5fYnkoIkZpbGVOYW1lIikpCmltZ19jb3VudCA8LSBpbWdfY291bnQgJT4lIHNlbGVjdChFZ2dDb3VudHMueCwgRWdnQ291bnRzLnkpCmltZ19jb3VudCA8LSBpbWdfY291bnQgJT4lIHJlbmFtZSgiTW9kZWwiID0gIkVnZ0NvdW50cy54IiwgIk1hbnVhbCIgPSAiRWdnQ291bnRzLnkiKQpgYGAKCmBgYHtyfQpnZ3Bsb3QoZGF0YSA9IGltZ19jb3VudCwgYWVzKHggPSBNYW51YWwsIHkgPSBNb2RlbCkpICsKICBnZW9tX3BvaW50KCkgKwogIGdlb21fc21vb3RoKG1ldGhvZCA9ICdsbScsIHNlID0gRkFMU0UpICsKICB0aGVtZV9wcmlzbShiYXNlX3NpemUgPSAxMCkgKwogIHhsYWIoIk1hbnVhbCBjb3VudHMiKSArCiAgeWxhYigiTW9kZWwgY291bnRzIikgKwogIHNjYWxlX3hfY29udGludW91cyhsaW1pdHMgPSBjKDAsMTAwKSwgYnJlYWtzID0gYyhzZXEoMCwxMDAsIGJ5PTIwKSkpICsKICBzY2FsZV95X2NvbnRpbnVvdXMobGltaXRzID0gYygwLDEwMCksIGJyZWFrcyA9IGMoc2VxKDAsMTAwLCBieT0yMCkpKSArIAogIHRoZW1lKAogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAyNCksCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAyNCkKICApCgpnZ3NhdmUoIi4uL1Jlc3VsdHMvU29mdE1lZGlhLnBkZiIpCmBgYAoKYGBge3J9CnN1bW1hcnkobG0oTW9kZWwgfiBNYW51YWwsIGRhdGEgPSBpbWdfY291bnQpKQpgYGA=</div>
+Matrix products: default
+LAPACK: /Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] ggbeeswarm_0.7.1 ggpubr_0.5.0     ggprism_1.0.4    forcats_1.0.0    stringr_1.5.1    dplyr_1.1.4      purrr_1.0.2      readr_2.1.5      tidyr_1.3.1     
+[10] tibble_3.2.1     ggplot2_3.4.2    tidyverse_1.3.2 
+
+loaded via a namespace (and not attached):
+ [1] httr_1.4.7          sass_0.4.5          jsonlite_1.8.8      splines_4.2.2       carData_3.0-5       modelr_0.1.11       bslib_0.4.2         vipor_0.4.5        
+ [9] googlesheets4_1.1.1 cellranger_1.1.0    yaml_2.3.7          pillar_1.9.0        backports_1.4.1     lattice_0.20-45     glue_1.6.2          digest_0.6.31      
+[17] RColorBrewer_1.1-3  ggsignif_0.6.4      rvest_1.0.4         colorspace_2.1-0    htmltools_0.5.4     Matrix_1.5-3        pkgconfig_2.0.3     broom_1.0.5        
+[25] haven_2.5.4         scales_1.3.0        tzdb_0.3.0          timechange_0.2.0    googledrive_2.1.1   mgcv_1.8-41         generics_0.1.3      farver_2.1.1       
+[33] car_3.1-1           cachem_1.0.6        withr_2.5.0         cli_3.6.2           magrittr_2.0.3      crayon_1.5.2        readxl_1.4.3        evaluate_0.20      
+[41] fs_1.6.3            fansi_1.0.4         nlme_3.1-161        rstatix_0.7.1       xml2_1.3.6          beeswarm_0.4.0      textshaping_0.3.6   tools_4.2.2        
+[49] hms_1.1.3           gargle_1.5.2        lifecycle_1.0.3     munsell_0.5.0       reprex_2.1.0        compiler_4.2.2      jquerylib_0.1.4     systemfonts_1.0.4  
+[57] rlang_1.1.3         grid_4.2.2          rstudioapi_0.14     labeling_0.4.2      rmarkdown_2.20      gtable_0.3.1        abind_1.4-5         DBI_1.1.3          
+[65] R6_2.5.1            lubridate_1.9.3     knitr_1.42          fastmap_1.1.0       utf8_1.2.2          ragg_1.3.2          stringi_1.7.12      vctrs_0.6.5        
+[73] dbplyr_2.5.0        tidyselect_1.2.1    xfun_0.36          </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3IgbWVzc2FnZSA9IEZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShnZ3ByaXNtKQpgYGAKCmBgYHtyfQpGbHlNb2RlbCA8LSByZWFkLmNzdigiLi4vRGF0YS8xcGVyY2VudF9mbHlNb2RlbDJfY291bnRzLmNzdiIpCk1hbnVhbCA8LSByZWFkLmNzdigiLi4vRGF0YS8xcGVyY2VudF9tYW51YWxjb3VudHMuY3N2IikKCmltZ19jb3VudCA8LSBGbHlNb2RlbCAlPiUgaW5uZXJfam9pbihNYW51YWwsIGpvaW5fYnkoIkZpbGVOYW1lIikpCmltZ19jb3VudCA8LSBpbWdfY291bnQgJT4lIHNlbGVjdChFZ2dDb3VudHMueCwgRWdnQ291bnRzLnkpCmltZ19jb3VudCA8LSBpbWdfY291bnQgJT4lIHJlbmFtZSgiTW9kZWwiID0gIkVnZ0NvdW50cy54IiwgIk1hbnVhbCIgPSAiRWdnQ291bnRzLnkiKQpgYGAKCmBgYHtyfQpnZ3Bsb3QoZGF0YSA9IGltZ19jb3VudCwgYWVzKHggPSBNYW51YWwsIHkgPSBNb2RlbCkpICsKICBnZW9tX3BvaW50KCkgKwogIGdlb21fc21vb3RoKG1ldGhvZCA9ICdsbScsIHNlID0gRkFMU0UpICsKICB0aGVtZV9wcmlzbShiYXNlX3NpemUgPSAxMCkgKwogIHhsYWIoIk1hbnVhbCBjb3VudHMiKSArCiAgeWxhYigiTW9kZWwgY291bnRzIikgKwogIHNjYWxlX3hfY29udGludW91cyhsaW1pdHMgPSBjKDAsMTAwKSwgYnJlYWtzID0gYyhzZXEoMCwxMDAsIGJ5PTIwKSkpICsKICBzY2FsZV95X2NvbnRpbnVvdXMobGltaXRzID0gYygwLDEwMCksIGJyZWFrcyA9IGMoc2VxKDAsMTAwLCBieT0yMCkpKSArIAogIHRoZW1lKAogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAyNCksCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAyNCkKICApCgpnZ3NhdmUoIi4uL1Jlc3VsdHMvU29mdE1lZGlhLnBkZiIpCmBgYAoKYGBge3J9CnN1bW1hcnkobG0oTW9kZWwgfiBNYW51YWwsIGRhdGEgPSBpbWdfY291bnQpKQpgYGAKCmBgYHtyfQpzZXNzaW9uSW5mbygpCmBgYAoK</div>
 
 
 

@@ -108,3 +108,7 @@ ggplot(data = img_count_error, aes(x = Model, y = Values, fill = Model)) +
 ggsave("../Results/ModelErrors.pdf")
 ```
 
+```{r}
+sessionInfo()
+```
+

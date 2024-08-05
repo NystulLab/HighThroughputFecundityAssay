@@ -78,3 +78,7 @@ sd(MixedAlt[MixedAlt$Condition == "MixedGrapeJuice" & MixedAlt$Day == "D1", "Egg
 sd(AltTx[AltTx$Day == "D1", "EggCount"])/mean(AltTx[AltTx$Day == "D1", "EggCount"])
 ```
 
+```{r}
+sessionInfo()
+```
+

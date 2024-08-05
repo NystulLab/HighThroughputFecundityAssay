@@ -67,3 +67,7 @@ compare_means(Value ~ Day, data = FoodTypes[FoodTypes$Condition == "BDSC",], met
 sd(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])/mean(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Value"])
 ```
 
+```{r}
+sessionInfo()
+```
+

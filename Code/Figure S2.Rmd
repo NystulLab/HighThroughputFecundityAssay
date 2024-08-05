@@ -137,4 +137,7 @@ ggplot(pvalsD7_all, aes(x = p, y = CondComp, fill = RowCount))  +
 ggsave("../Results/pvalsD7.pdf", width = 7, height = 3.5, units = "in")
 ```
 
+```{r}
+sessionInfo()
+```
 

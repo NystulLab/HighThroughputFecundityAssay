@@ -37,3 +37,8 @@ ggsave("../Results/SoftMedia.pdf")
 ```{r}
 summary(lm(Model ~ Manual, data = img_count))
 ```
+
+```{r}
+sessionInfo()
+```
+
