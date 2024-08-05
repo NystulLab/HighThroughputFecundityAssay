@@ -5,136 +5,36 @@ output: html_notebook
 
 ```{r}
 library(tidyverse)
+library(stringr)
+library(ggpubr)
+library(ggbeeswarm)
 library(ggprism)
 ```
 
 ```{r}
-AllData <- read.csv("../Data/ChemicalExposure.csv")
+OnePercent <- read.csv("../Data/1percent.csv")
+AltTx <- read.csv("../Data/AlternatingTimecourse.csv")
+AltTx <- rename(AltTx, EggCounts = EggCount)
 ```
 
 ```{r}
-#Number of wells per condition in each replicate
-counts <- AllData %>% group_by(Condition, Day) %>% summarise(count = n())
+Comp <- rbind(OnePercent[,1:4], AltTx[,2:5])
 ```
 
 ```{r}
-DataSample <- function(AllData, SampleSize, TimePoint) {
-  #set seed and sample a number of rows equal to SampleSize from each day of each condition
-  set.seed(100)
-  Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., SampleSize)
-  Subset <- Subset %>% filter(Day == TimePoint)
-  
-  #run pairwise t-tests on the downsampled data
-  attach(Subset)
-  pvals <- (pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
-  pvals <- as.data.frame(pvals)
-  pvals <- pvals %>% rownames_to_column(var = "Condition")
-  detach(Subset)
-  
-  #repeat sampling and pairwise t-tests 99 more times
-  for(x in 1:99) {
-    set.seed(x)
-    Subset <- AllData %>% group_by(Condition, Day) %>% sample_n(., SampleSize)
-    Subset <- Subset %>% filter(Day == TimePoint)
-    attach(Subset)
-    temppvals <- (p = pairwise.t.test(EggCount, Condition, p.adj = "bonf"))$p.value
-    temppvals <- as.data.frame(temppvals)
-    temppvals <- temppvals %>% rownames_to_column(var = "Condition")
-    detach(Subset)
-    pvals <- rbind(pvals, temppvals)
-  } 
-  
-  #put dataframe in tidy format and filter for relevant comparisons
-  pvals <- pvals %>% pivot_longer(!Condition, names_to = "Comparison", values_to = "p")
-  pvals <- pvals %>% filter(!is.na(p))
-  pvals$CondComp <- paste(pvals$Condition, pvals$Comparison)
-  pvals$DMSO <- grepl("DMSO", pvals$CondComp)
-  pvals <- pvals %>% filter(DMSO == TRUE)
-  pvals$RowCount <- paste(SampleSize, "rows sampled")
-  return(pvals)
-}
-```
-
-
-```{r, message=FALSE}
-pvalsD1_4 <- DataSample(AllData, 4, "D1")
-pvalsD1_8 <- DataSample(AllData, 8, "D1")
-pvalsD1_16 <- DataSample(AllData, 16, "D1")
-pvalsD1_24 <- DataSample(AllData, 24, "D1")
-pvalsD1_all <- rbind(pvalsD1_4, pvalsD1_8, pvalsD1_16, pvalsD1_24)
-```
-
-```{r}
-pvalsD1_all$CondComp <- factor(pvalsD1_all$CondComp, levels = c("DMSO Bendiocarb_25", "DMSO Bendiocarb_10","DMSO Bendiocarb_0.1", "Rap_25 DMSO", "Rap_10 DMSO", "Rap_0.1 DMSO"))
-pvalsD1_all$RowCount <- factor(pvalsD1_all$RowCount, levels = c("24 rows sampled", "16 rows sampled", "8 rows sampled", "4 rows sampled"))
-
-ggplot(pvalsD1_all, aes(x = p, y = CondComp, fill = RowCount))  +
-  geom_boxplot(outlier.size = 0.3) +
+ggplot(data = Comp, aes(x = Day, y = EggCounts, fill = Condition)) + 
+  geom_boxplot() +
   theme_prism(base_size = 10) +
-  scale_fill_brewer(palette = "Blues") +
-  scale_x_log10(breaks = c(1e-12, 1e-8, 1e-4, 0.05, 1), limits = c(1e-14, 1)) +
-  scale_y_discrete(labels = c("25 uM Bendiocarb", "10 uM Bendiocarb", "0.1 uM Bendiocarb", "25 uM Rapamycin", "10 uM Rapamycin", "0.1 uM Rapamycin")) +
-  guides(fill = guide_legend(reverse=TRUE)) +
-  xlab("p-values") +
-  ylab("")
+  theme(legend.text = element_text(size = 10, face = "bold"), legend.position = c(0.85,0.85)) +
+  scale_fill_brewer(palette = "Blues", labels = c("1 percent", "2 percent")) +
+  xlab("Agarose Concentration") +
+  ylab("Number of Eggs Laid") 
 
-ggsave("../Results/pvalsD1.pdf", width = 7, height = 3.5, units = "in")
-```
-
-```{r message=FALSE}
-pvalsD3_4 <- DataSample(AllData, 4, "D3")
-pvalsD3_8 <- DataSample(AllData, 8, "D3")
-pvalsD3_16 <- DataSample(AllData, 16, "D3")
-pvalsD3_24 <- DataSample(AllData, 24, "D3")
-pvalsD3_all <- rbind(pvalsD3_4, pvalsD3_8, pvalsD3_16, pvalsD3_24)
+ggsave("../Results/1percent_v_2percent.pdf", width = 150, height = 100, units = "mm")
 ```
 
 ```{r}
-pvalsD3_all$CondComp <- factor(pvalsD3_all$CondComp, levels = c("DMSO Bendiocarb_25", "DMSO Bendiocarb_10","DMSO Bendiocarb_0.1", "Rap_25 DMSO", "Rap_10 DMSO", "Rap_0.1 DMSO"))
-pvalsD3_all$RowCount <- factor(pvalsD3_all$RowCount, levels = c("24 rows sampled", "16 rows sampled", "8 rows sampled", "4 rows sampled"))
-
-ggplot(pvalsD3_all, aes(x = p, y = CondComp, fill = RowCount))  +
-  geom_boxplot(outlier.size = 0.3) +
-  theme_prism(base_size = 10) +
-  scale_fill_brewer(palette = "Blues") +
-  scale_x_log10(breaks = c(1e-12, 1e-8, 1e-4, 0.05, 1), limits = c(1e-14, 1)) +
-  scale_y_discrete(labels = c("25 uM Bendiocarb", "10 uM Bendiocarb", "0.1 uM Bendiocarb", "25 uM Rapamycin", "10 uM Rapamycin", "0.1 uM Rapamycin")) +
-  guides(fill = guide_legend(reverse=TRUE)) +
-  xlab("p-values") +
-  ylab("")
-
-ggsave("../Results/pvalsD3.pdf", width = 7, height = 3.5, units = "in")
-```
-
-```{r}
-#Calculate percent of p-values below 0.05
-pvalsD3_signif <- pvalsD3_all %>% filter(p < 0.05) %>% group_by(CondComp, RowCount) %>% summarise(N = n())
-```
-
-```{r, message=FALSE}
-pvalsD7_4 <- DataSample(AllData, 4, "D7")
-pvalsD7_8 <- DataSample(AllData, 8, "D7")
-pvalsD7_16 <- DataSample(AllData, 16, "D7")
-pvalsD7_24 <- DataSample(AllData, 24, "D7")
-pvalsD7_all <- rbind(pvalsD7_4, pvalsD7_8, pvalsD7_16, pvalsD7_24)
-```
-
-
-```{r}
-pvalsD7_all$CondComp <- factor(pvalsD7_all$CondComp, levels = c("DMSO Bendiocarb_10","DMSO Bendiocarb_0.1", "Rap_25 DMSO", "Rap_10 DMSO", "Rap_0.1 DMSO"))
-pvalsD7_all$RowCount <- factor(pvalsD7_all$RowCount, levels = c("24 rows sampled", "16 rows sampled", "8 rows sampled", "4 rows sampled"))
-
-ggplot(pvalsD7_all, aes(x = p, y = CondComp, fill = RowCount))  +
-  geom_boxplot(outlier.size = 0.3) +
-  theme_prism(base_size = 10) +
-  scale_fill_brewer(palette = "Blues") +
-  scale_x_log10(breaks = c(1e-12, 1e-8, 1e-4, 0.05, 1), limits = c(1e-14, 1)) +
-  scale_y_discrete(labels = c("10 uM Bendiocarb", "0.1 uM Bendiocarb", "25 uM Rapamycin", "10 uM Rapamycin", "0.1 uM Rapamycin")) +
-  guides(fill = guide_legend(reverse=TRUE)) +
-  xlab("p-values") +
-  ylab("")
-
-ggsave("../Results/pvalsD7.pdf", width = 7, height = 3.5, units = "in")
+compare_means(EggCounts ~ Condition, data = Comp, group.by = "Day", method = "t.test", p.adjust.method = "bonf")
 ```
 
 ```{r}
