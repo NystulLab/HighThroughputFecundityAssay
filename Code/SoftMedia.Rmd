@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message = FALSE}
+library(tidyverse)
+library(ggprism)
+```
+
+```{r}
+FlyModel <- read.csv("../Data/1percent_flyModel2_counts.csv")
+Manual <- read.csv("../Data/1percent_manualcounts.csv")
+
+img_count <- FlyModel %>% inner_join(Manual, join_by("FileName"))
+img_count <- img_count %>% select(EggCounts.x, EggCounts.y)
+img_count <- img_count %>% rename("Model" = "EggCounts.x", "Manual" = "EggCounts.y")
+```
+
+```{r}
+ggplot(data = img_count, aes(x = Manual, y = Model)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_prism(base_size = 10) +
+  xlab("Manual counts") +
+  ylab("Model counts") +
+  scale_x_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) +
+  scale_y_continuous(limits = c(0,100), breaks = c(seq(0,100, by=20))) + 
+  theme(
+    axis.text = element_text(size = 24),
+    axis.title = element_text(size = 24)
+  )
+
+ggsave("../Results/SoftMedia.pdf")
+```
+
+```{r}
+summary(lm(Model ~ Manual, data = img_count))
+```
