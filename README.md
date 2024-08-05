@@ -9,6 +9,7 @@
 ## RoboCam
 ### Contents
 `RoboCam` : Python scripts used to operate the RoboCam
+`FlyCam-Support-Materials` : Manuals and STL files for 3D printing. Also available at https://github.com/raymondWWW/FlyCam-Support-Materials
 
 ## Image segmentation to identify eggs
 ### Contents
