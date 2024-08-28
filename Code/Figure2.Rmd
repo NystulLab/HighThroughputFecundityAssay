@@ -71,6 +71,15 @@ compare_means(EggCounts ~ Day, data = MixedAlt, group.by = "Condition", method =
 compare_means(EggCount ~ Day, data = AltTx, method = "t.test", p.adjust.method = "bonf")
 ```
 
+```{r}
+#calculate sample size and number of replicates
+MixedAlt %>% group_by(Condition, Day) %>% summarise(RepeatNumber = length(unique(Repeat)), SampleNumber = n())
+```
+
+```{r}
+#calculate sample size and number of replicates
+AltTx %>% group_by(Condition, Day) %>% summarise(RepeatNumber = max(Repeat), SampleNumber = n())
+```
 
 ```{r}
 #calculate the coefficients of variation

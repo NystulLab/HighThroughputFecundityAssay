@@ -68,6 +68,12 @@ sd(FoodTypes[FoodTypes$Condition == "Grape Juice" & FoodTypes$Day == "D1", "Valu
 ```
 
 ```{r}
+#calculate sample size and number of replicates
+FoodTypes %>% group_by(Condition, Day) %>% summarise(RepeatNumber = length(unique(Repeat)), SampleNumber = n())
+```
+
+
+```{r}
 sessionInfo()
 ```
 

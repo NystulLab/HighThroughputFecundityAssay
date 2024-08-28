@@ -38,6 +38,11 @@ compare_means(EggCounts ~ Condition, data = Comp, group.by = "Day", method = "t.
 ```
 
 ```{r}
+#calculate sample size and number of replicates
+Comp %>% group_by(Condition, Day) %>% summarise(RepeatNumber = length(unique(Repeat)), SampleNumber = n())
+```
+
+```{r}
 sessionInfo()
 ```
 

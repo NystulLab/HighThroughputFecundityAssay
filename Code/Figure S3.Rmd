@@ -64,3 +64,11 @@ theme(
 ggsave("../Results/Figure S3.pdf", width = 120, height = 90, units = "mm")
 ```
 
+```{r}
+compare_means(EggCount ~ Condition, data = WTstrains, group.by = "Day", method = "t.test", p.adjust.method = "bonf")
+```
+
+```{r}
+#calculate sample size and number of replicates
+WTstrains %>% group_by(Condition, Day) %>% summarise(RepeatNumber = length(unique(Repeat)), SampleNumber = n())
+```
