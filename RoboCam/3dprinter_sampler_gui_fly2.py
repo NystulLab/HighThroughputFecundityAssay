@@ -54,7 +54,7 @@ from picamera.array import PiRGBArray, PiBayerArray
 from picamera import PiCamera
 from Xlib.display import Display
 import csv
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
 import cv2
 import numpy as np
 import os
