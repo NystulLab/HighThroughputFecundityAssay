@@ -1,0 +1,41 @@
+# Cell Sensor 3D Printer Connection Settings:
+# 3D printer specs from:
+  # https://www.monoprice.com/product?p_id=15710
+  # https://www.monoprice.com/product?p_id=13860
+
+# For the Cell Sensor Project (the 3D printer I have at home)
+cell_sensor:
+    monoprice:
+      name: Monoprice Maker Select Pro Ultimate 3D Printer
+      device_path: /dev/ttyUSB0
+      baudrate: 250000
+      # timeout and reboot times are in seconds
+      timeout_time: 1
+      reboot_wait_time: 5
+      camera_rotation: 90
+      # maximum dimensions in mm, and speed in mm/sec
+      max:
+        x: 200
+        y: 200
+        z: 175
+        test: [200, 200, 175]
+        # travel speed in mm/sec
+        speed: 350
+
+# For the MHT project (the 3D printer in Room 722)
+mht:
+    monoprice:
+      name: Monoprice Maker Select 3D Printer V2
+      device_path: /dev/ttyUSB0
+      baudrate: 115200
+      # timeout and reboot times are in seconds
+      timeout_time: 1
+      reboot_wait_time: 8
+      camera_rotation: 270
+      # maximum dimensions in mm, and travel speed in mm/sec
+      max:
+        x: 200
+        y: 200
+        z: 180
+        # travel speed in mm/sec
+        speed: 70
